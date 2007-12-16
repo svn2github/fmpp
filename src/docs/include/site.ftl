@@ -1,4 +1,3 @@
-<#-- $Id: site.ftl,v 1.42 2007/08/20 12:58:26 ddekany Exp $ -->
 <@pp.ignoreOutput>
 <#escape x as x?html>
 

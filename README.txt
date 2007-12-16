@@ -66,6 +66,3 @@ Visigoth Software Society (http://www.visigoths.org/).
 
 This product includes software developed by the
 Apache Software Foundation (http://www.apache.org/).
-
-
-$Id: README.txt,v 1.14 2004/06/15 23:57:42 ddekany Exp $

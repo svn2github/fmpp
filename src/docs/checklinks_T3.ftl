@@ -1,5 +1,3 @@
-<#-- $Id: checklinks_T3.ftl,v 1.7 2007/08/20 12:58:25 ddekany Exp $ -->
-
 <@pp.dropOutputFile/>
 
 <#list pp.s.hrefs as href>

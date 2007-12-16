@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<!-- $Id: build.xml,v 1.70 2006/03/15 00:21:47 ddekany Exp $ -->
-
 <project basedir="." default="build" name="fmpp">
     <property file="src/java/fmpp/version.properties" />
     <property environment="env" />

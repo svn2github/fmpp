@@ -80,5 +80,3 @@ Releases should be announced on the following places:
 - Sourceforge.net email notification for subscribers
 - FMPP mailing list (fmpp-open@lists.sourceforge.net)
 - Freshmeat.net
-
-$Id: BUILD.txt,v 1.20 2007/04/27 13:01:45 ddekany Exp $
