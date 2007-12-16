@@ -49,7 +49,9 @@ public abstract class AbstractTextDataLoader extends FileDataLoader {
         String encoding;
 
         encoding = parseExtraArguments(args);
-        encoding = engine.getSourceEncoding();
+        if (encoding == null) {
+            encoding = engine.getSourceEncoding();
+        }
 
         StringBuffer sb = new StringBuffer(1024);
         Reader r = new InputStreamReader(data, encoding);
@@ -59,7 +61,14 @@ public abstract class AbstractTextDataLoader extends FileDataLoader {
             sb.append(buffer, 0, i);
         }
 
-        return parseText(sb.toString());
+        String s = sb.toString();
+        
+        // Remove Windows Notepad BOM:  
+        if (s.startsWith("\uFEFF")) {
+            s = s.substring(1);
+        }
+        
+        return parseText(s);
     }
     
     /**

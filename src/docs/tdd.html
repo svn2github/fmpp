@@ -227,7 +227,7 @@ data: {
 }
 </@prg>
 
-<p>The first function call (<@c>tdd(<@r>...</@r>)</@c>) returns the a hash that was built by interpreting the <@c>data/style.tdd</@c> file. There is no key given for it (like <@c>someKey:&nbsp;tdd(<@r>...</@r>)</@c>), so its key:value pairs will be added directly to the <@s>data</@s> hash (<@a href="#hashAddition">hash addition</@a>). The second call (<@c>cvs(<@r>...</@r>)</@c>) returns a sequence, which will be stored with key <@c>birds</@c> in the <@s>data</@s> hash.</p>
+<p>The first function call (<@c>tdd(<@r>...</@r>)</@c>) returns the a hash that was built by interpreting the <@c>data/style.tdd</@c> file. There is no key given for it (like <@c>someKey:&nbsp;tdd(<@r>...</@r>)</@c>), so its key:value pairs will be added directly to the <@s>data</@s> hash (<@a href="#hashAddition">hash addition</@a>). The second call (<@c>csv(<@r>...</@r>)</@c>) returns a sequence, which will be stored with key <@c>birds</@c> in the <@s>data</@s> hash.</p>
 
 <p>Another example of the usage TDD functions is when method calls are used with the <@s>modes</@s> setting. A fragment from a possible configuration file:</p>
 
@@ -274,7 +274,7 @@ b <#-- this was the key --> : <#-- now comes the value --> 2
 <p>If you load TDD from a file, then FMPP have to use an encoding (charset) to interpret the bytes as text. The default of this encoding depends on how do you load the TDD file:</p>
 <ul>
   <li>If it is a configuration file: <@c>ISO-8859-1</@c> is used.</li>
-  <li>If it is loaded with data loader <@c>tdd</@c> as <@c>tdd(<@r>fileName</@r>)</@c>: <@s>sourceEncoding</@s> is used.</li>
+  <li>If it is loaded with <@c>tdd</@c> data loader as <@c>tdd(<@r>fileName</@r>)</@c>: <@s>sourceEncoding</@s> is used.</li>
   <li>If it is loaded with data loader <@c>tdd</@c> as <@c>tdd(<@r>fileName</@r>, <@r>encoding</@r>)</@c>: the encoding suggested by the 2nd parameter is used.</li>
 </ul>
 

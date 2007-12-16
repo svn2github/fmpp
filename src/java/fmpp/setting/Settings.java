@@ -152,6 +152,7 @@ public class Settings {
     public static final String NAME_REPLACE_EXTENSIONS = "replaceExtensions";
     public static final String OLD_NAME_REPLACE_EXTENSION = "replaceExtension";
     public static final String NAME_IGNORE_CVS_FILES = "ignoreCvsFiles";
+    public static final String NAME_IGNORE_SVN_FILES = "ignoreSvnFiles";
     public static final String NAME_IGNORE_TEMPORARY_FILES
             = "ignoreTemporaryFiles";
     public static final String NAME_EXPERT = "expert";
@@ -819,6 +820,7 @@ public class Settings {
         stdDef(NAME_REMOVE_POSTFIXES, TYPE_SEQUENCE, true, true);
         stdDef(NAME_REPLACE_EXTENSIONS, TYPE_SEQUENCE, true, true);
         stdDef(NAME_IGNORE_CVS_FILES, TYPE_BOOLEAN, false, false);
+        stdDef(NAME_IGNORE_SVN_FILES, TYPE_BOOLEAN, false, false);
         stdDef(NAME_IGNORE_TEMPORARY_FILES, TYPE_BOOLEAN, false, false);
         stdDef(NAME_EXPERT, TYPE_BOOLEAN, false, false);
         stdDef(NAME_LOG_FILE, TYPE_CFG_RELATIVE_PATH, false, true);
@@ -1618,6 +1620,11 @@ public class Settings {
         b = (Boolean) get(NAME_IGNORE_CVS_FILES);
         if (b != null) {
             eng.setIgnoreCvsFiles(b.booleanValue());
+        }
+
+        b = (Boolean) get(NAME_IGNORE_SVN_FILES);
+        if (b != null) {
+            eng.setIgnoreSvnFiles(b.booleanValue());
         }
 
         b = (Boolean) get(NAME_IGNORE_TEMPORARY_FILES);

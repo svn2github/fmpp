@@ -3,20 +3,32 @@
 <@page title="Version History" keywords="verions, version history">
 
 <@sect title="0.9.13">
-  <p>Date of release: 2007-08-FIXME</p>
+  <p>Date of release: 2007-12-16</p>
 
   <p>Bugfixes:</p>
   <ul>
-    <li>The <@s>skipUnchanged</@s> setting didn't work since 0.9.10. Now it works again.</li>
+    <li>The <@s>skipUnchanged</@s> setting haven't had any effect since 0.9.10. Now it works again.</li>
     
     <li>When detecting the dimensions of certain image files, new lines were printed to the standard output (i.e. to the console).</li>
+    
+    <li>The <@c>slicedText</@c> data loader has ignored the <@c>encoding</@c> parameter.</li>
+
+    <li><@nbc/> The <@c>csv</@c>, <@c>text</@c> and <@c>slicedText</@c> data loaders didn't skipped the BOM (byte order mark) character at the beginning of the file. This was a problem as the Windows Notepad inserts a BOM there when it saves with UTF-8 encoding. This fix is not 100% backward compatible, as someone may indeed wanted to have that BOM.</li>
+    
+    <li>The  data loader didn't skipped the BOM character at the beginning of the file either.</li>
+    
+    <li>API: The <@c>fmpp.dataloaders.AbstractTextDataLoader</@c> ignored the encoding returned by the <@c>parseExtraArguments</@c> method.</li>
   </ul>
 
   <p>New features, improvements:</p>
   <ul>
     <li>The <@c>csv</@c> data loader has a few new options: <@c>normalizeHeaders</@c>, <@c>trimCells</@c>, and <@c>emptyValue</@c>. <@a href="dataloader.html#key_csv">More...</@a></li>
     
+    <li><@nbc /> New setting: <@s>ignoreSvnFiles</@s>. This will ignore files that are inside a directory with name <@c>.svn</@c>. This setting is be default on (<@c>true</@c>), so it's theoretically not backward compatible.</li>
+    
     <li>API: <@c>DataLoaderUtil.getStringArrayArgument</@c> and <@c>getStringArrayOption</@c> now have an overload with <@c>allowString</@c> argument, so that a single item can be easlity treated as an array of length 1.</li>
+    
+    <li>Updated <@c>freemarker.jar</@c> to 2.3.11.</li>    
   </ul>
 
 </@sect>  

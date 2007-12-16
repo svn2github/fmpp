@@ -10,11 +10,11 @@ To (re)build the docs (incremental building):
 
 * Run "ant docs" from the FMPP root directory.
 
-NOTE: If you simply check out the CVS repositroy, you should add
+NOTE: If you simply check out the SVN repositroy, you should add
 FreeMarker documentation manually (or you get a warning). That is, copy
 the pre-built FreeMarker documentation into the src/docs/freemarker
 directory. Theoretically you should build the FreeMarker documentation
-with the docgen module of FreeMarker CVS, but it is not trivial, so for
+with the docgen module of FreeMarker SVN, but it is not trivial, so for
 most users the best solution is to simply copy the docs/freemarker
 directory of the latest FMPP distribution into src/docs/freemarker.
 
@@ -58,7 +58,7 @@ To build a distribution (dist/fmpp_<version>.tar.gz and zip):
 * Make sure of you didn't polluted the FMPP directories with some
   temporary files (your ad-hoc tests, backups, etc.). If you left such
   files, they will be included in the distribution... Note that typical
-  trash files (*.bak, *.~*, CVS files, etc.) should be filtered out
+  trash files (*.bak, *.~*, SVN files, etc.) should be filtered out
   automatically by the ant task.
 
 * Run "ant dist"

@@ -232,6 +232,7 @@ public class Engine {
     private ArrayList replaceExtensions = new ArrayList();
     private int skipUnchanged;
     private boolean ignoreCvsFiles = true;
+    private boolean ignoreSvnFiles = true;
     private boolean ignoreTemporaryFiles = true;
     private String xpathEngine = XPATH_ENGINE_DONT_SET;
     private Object xmlEntityResolver;
@@ -1777,6 +1778,20 @@ public class Engine {
     }
 
     /**
+     * Sets if the SVN files inside the source root directory should be
+     * ignoread or not. This engine parameter is initially true.
+     * <p>The SVN files are: <code>**<!-- -->/SVN/**</code>
+     */
+    public void setIgnoreSvnFiles(boolean ignoreSvnFiles) {
+        checkParameterLock();
+        this.ignoreSvnFiles = ignoreSvnFiles;
+    }
+
+    public boolean getIgnoreSvnFiles() {
+        return ignoreSvnFiles;
+    }
+    
+    /**
      * Set if well-known temporary files inside the source root directory should
      * be ingored or not. For the list of well-known temporary file patterns,
      * read the FMPP Manual.
@@ -2568,44 +2583,61 @@ public class Engine {
     }
     
     private int getProcessingMode(File f) throws IOException {
-        String fname = f.getName();
-        String fpath = f.getAbsolutePath();
+        String fnameCs = f.getName();
+        String fpathCs = f.getAbsolutePath();
+        String fnameCisLower;
+        String fpathCisLower;
+        String fpathCisUpper;
         if (!csPathCmp) {
-            fname = fname.toLowerCase();
-            fpath = fpath.toUpperCase();
-        }
-        int i = fname.lastIndexOf(".");
-        String ext;
-        if (i == -1) {
-            ext = "";
+            fnameCisLower = fnameCs.toLowerCase();
+            fpathCisLower = fpathCs.toLowerCase();
+            fpathCisUpper = fpathCs.toUpperCase();
         } else {
-            ext = fname.substring(i + 1).toLowerCase();
+            fnameCisLower = fnameCs;
+            fpathCisLower = fpathCs;
+            fpathCisUpper = fpathCs;
         }
         
-        if (ext.equals("fmpp")) {
+        int i = fnameCs.lastIndexOf(".");
+        String extLower;
+        if (i == -1) {
+            extLower = "";
+        } else {
+            extLower = fnameCs.substring(i + 1).toLowerCase();
+        }
+        
+        if (extLower.equals("fmpp")) {
             return PMODE_IGNORE;
         }
         if (ignoreCvsFiles) {
-            if (fname.equals(".cvsignore")  
-                    || fpath.indexOf("/CVS/") != -1
-                    || fpath.indexOf(
+            if (fnameCisLower.equals(".cvsignore")  
+                    || fpathCisUpper.indexOf("/CVS/") != -1
+                    || fpathCisUpper.indexOf(
                             File.separatorChar + "CVS" + File.separatorChar)
                        != -1
-                    || (fname.length() > 2 && fname.startsWith(".#"))) {
+                    || (fnameCs.length() > 2 && fnameCs.startsWith(".#"))) {
+                return PMODE_IGNORE;
+            }
+        }
+        if (ignoreSvnFiles) {
+            if (fpathCisLower.indexOf("/.svn/") != -1
+                    || fpathCisLower.indexOf(
+                            File.separatorChar + ".svn" + File.separatorChar)
+                       != -1) {
                 return PMODE_IGNORE;
             }
         }
         if (ignoreTemporaryFiles) {
             if (
-                    (fname.length() > 2 && (
-                        (fname.startsWith("#") && fname.endsWith("#"))
-                        || (fname.startsWith("%") && fname.endsWith("%"))
-                        || fname.startsWith("._")
-                        || ext.equals("bak")))
-                    || (fname.length() > 1 && (
-                        fname.endsWith("~")
-                        || fname.startsWith("~")
-                        || ext.startsWith("~")))
+                    (fnameCs.length() > 2 && (
+                        (fnameCs.startsWith("#") && fnameCs.endsWith("#"))
+                        || (fnameCs.startsWith("%") && fnameCs.endsWith("%"))
+                        || fnameCs.startsWith("._")
+                        || extLower.equals("bak")))
+                    || (fnameCs.length() > 1 && (
+                        fnameCs.endsWith("~")
+                        || fnameCs.startsWith("~")
+                        || extLower.startsWith("~")))
                     ) {
                 return PMODE_IGNORE;
             }
@@ -2613,9 +2645,9 @@ public class Engine {
 
         PModeChooser pmc = (PModeChooser) findChooser(pModeChoosers, f);
         if (pmc == null) {
-            if (STATIC_FILE_EXTS.contains(ext)) {
+            if (STATIC_FILE_EXTS.contains(extLower)) {
                 return PMODE_COPY;
-            } else if (xmlRendCfgCntrs.size() != 0 && ext.equals("xml")) {
+            } else if (xmlRendCfgCntrs.size() != 0 && extLower.equals("xml")) {
                 return PMODE_RENDER_XML;
             } else {
                 return PMODE_EXECUTE;

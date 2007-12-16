@@ -1,13 +1,13 @@
 <#ftl encoding="ISO-8859-2">
 
 <#macro listFileNoMagic fileName separator>
-<#list pp.loadData('slicedText', fileName, {"separator":separator, 'dropEmptyLastItem':false}) as x>
+<#list pp.loadData('slicedText', fileName, {"separator":separator, 'dropEmptyLastItem':false, 'encoding':'utf-8'}) as x>
 [${x}]
 </#list>
 </#macro>
 
 <#macro listFileTrim fileName separator>
-<#list pp.loadData('slicedText', fileName, {"separator":separator, 'trim':true}) as x>
+<#list pp.loadData('slicedText', fileName, {"separator":separator, 'trim':true, 'encoding':'utf-8'}) as x>
 [${x}]
 </#list>
 </#macro>

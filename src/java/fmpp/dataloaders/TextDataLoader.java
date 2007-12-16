@@ -48,6 +48,7 @@ import java.io.StringWriter;
  * @version $Id: TextDataLoader.java,v 1.2 2005/02/26 20:29:59 ddekany Exp $
  */
 public class TextDataLoader extends FileDataLoader {
+    
     protected Object load(InputStream data) throws Exception {
         String encoding;
 
@@ -76,7 +77,14 @@ public class TextDataLoader extends FileDataLoader {
             w.write(buffer, 0, i);
         }
 
-        return w.toString();
+        String s = w.toString();
+        
+        // Remove Windows Notepad BOM:  
+        if (s.startsWith("\uFEFF")) {
+            s = s.substring(1);
+        }
+        
+        return s;
     }
 
 }

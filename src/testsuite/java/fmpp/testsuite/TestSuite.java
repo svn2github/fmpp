@@ -158,7 +158,7 @@ public class TestSuite {
     public void run() throws IOException {
         File[] projects;
         if (testcase == null) {
-            projects = removeCvsFiles(projsParentDir.listFiles());
+            projects = removeCVSAndSVNFiles(projsParentDir.listFiles());
         } else {
             projects = new File[] {new File(projsParentDir, testcase)};
         }
@@ -269,7 +269,7 @@ public class TestSuite {
                     + "\"build\". This does not stand for this path: " + path);
         }
         
-        File[] files = removeCvsFiles(dir.listFiles());
+        File[] files = removeCVSAndSVNFiles(dir.listFiles());
         for (int i = 0; i < files.length; i++) {
             if (files[i].isDirectory()) {
                 if (keepDir == null || !files[i].getName().equals(keepDir)) {
@@ -307,14 +307,14 @@ public class TestSuite {
             throw new IOException("Reference directory not found: "
                     + refDir.getAbsolutePath());
         } 
-        refDirFiles = removeCvsFiles(refDirFiles);
+        refDirFiles = removeCVSAndSVNFiles(refDirFiles);
         
         File[] chkedDirFiles = chkedDir.listFiles();
         if (chkedDirFiles == null) {
             throw new IOException("Checked directory not found: "
                     + chkedDir.getAbsolutePath());
         } 
-        chkedDirFiles = removeCvsFiles(chkedDirFiles);
+        chkedDirFiles = removeCVSAndSVNFiles(chkedDirFiles);
         
         for (int ci = 0; ci < chkedDirFiles.length; ci++) {
             File cf = chkedDirFiles[ci];
@@ -497,13 +497,14 @@ public class TestSuite {
         return res;
     }
     
-    private static File[] removeCvsFiles(File[] files) {
+    private static File[] removeCVSAndSVNFiles(File[] files) {
         int ln = files.length;
         ArrayList list = new ArrayList(ln);
         boolean changed = false;
         for (int i = 0; i < ln; i++) {
             String name = files[i].getName().toLowerCase();
-            if (!name.equals("cvs") && !name.startsWith(".#")) {
+            if (!name.equals("cvs") && !name.startsWith(".#")
+                    && !name.equals(".svn")) {
                 list.add(files[i]);
             } else {
                 changed = true;

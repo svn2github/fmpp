@@ -371,6 +371,14 @@ public class CommandLine {
                     .property(dn(Settings.NAME_IGNORE_CVS_FILES), "false")
                     .desc("Don't ignore CVS files in the source root "
                             + "directory.");
+            ap.addOption(null, dn(Settings.NAME_IGNORE_SVN_FILES))
+                    .implied()
+                    .desc("Ignore SVN files in the source root directory. "
+                            + "This is the default.");
+            ap.addOption(null, "dont-" + dn(Settings.NAME_IGNORE_SVN_FILES))
+                    .property(dn(Settings.NAME_IGNORE_SVN_FILES), "false")
+                    .desc("Don't ignore SVN files in the source root "
+                            + "directory.");
             ap.addOption(null, dn(Settings.NAME_IGNORE_TEMPORARY_FILES))
                     .implied()
                     .desc("Ignore well-known temporary files (e.g. **/?*~) in "                            + "the source root directory. "                            + "This is the default.");

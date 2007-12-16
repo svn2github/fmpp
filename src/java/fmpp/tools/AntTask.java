@@ -389,9 +389,10 @@ public class AntTask extends org.apache.tools.ant.taskdefs.MatchingTask {
                     singleFileMode = false;
                 }
 
-                // disable CVS file and temorary file ignoring,
+                // Disable CVS/SVN file and temporary file ignoring,
                 // as it interferes with defaultexcludes="no"
                 ss.add(Settings.NAME_IGNORE_CVS_FILES, Boolean.FALSE);
+                ss.add(Settings.NAME_IGNORE_SVN_FILES, Boolean.FALSE);
                 ss.add(Settings.NAME_IGNORE_TEMPORARY_FILES, Boolean.FALSE);
 
                 try {

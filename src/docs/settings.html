@@ -97,6 +97,7 @@ To read text files, FMPP uses the source encoding. This is be default ISO-8859-1
 <@sect title="Processing mode choosing" anchor="processingMode">
 <@setting name="modes" type="sequence (of function calls)" default="ex:empty" clShort="M" merging=true />
 <@setting name="ignoreCvsFiles" type="boolean" default="true" merging=false />
+<@setting name="ignoreSvnFiles" type="boolean" default="true" merging=false />
 <@setting name="ignoreTemporaryFiles" type="boolean" default="true" merging=false />
 
 <p>When FMPP has to process a file, it has to decide how to process that. That is, it has to choose a "processing mode" for the file. The processing mode can be one of:</p>
@@ -107,7 +108,7 @@ To read text files, FMPP uses the source encoding. This is be default ISO-8859-1
   <li>ignore: Skip the file.
 </ul>
 
-<p>First, if the <@s>ignoreCvsFiles</@s> setting is true, and the file name is <@c>.cvsignore</@c> or matches <@c>.#?*</@c>, or the file is inside a sub-directory of the source root that is called <@c>CVS</@c>, then it chooses the "ignore" processing mode. Also, if <@s>ignoreTemporaryFiles</@s> setting is true, and the file name matches <@c>?*~</@c> or <@c>~?*</@c> or <@c>#?*#</@c> or <@c>%?*%</@c> or <@c>_.?*</@c>, or the extension (the part after the last dot in the file name) after converting to lowercase matches <@c>bak</@c> or <@c>~*</@c> or <@c>*~</@c> then it chooses the "ignore" processing mode. Note that the FMPP Ant task always sets these settings to <@c>false</@c>, so it does not interfere with the <@c>defaultExcludes</@c> parameter of Ant.</p>
+<p>First, if the <@s>ignoreCvsFiles</@s> setting is true, and the file name is <@c>.cvsignore</@c> or matches <@c>.#?*</@c>, or the file is inside a sub-directory of the source root that is called <@c>CVS</@c>, then it chooses the "ignore" processing mode. Also, if the <@s>ignoreSvnFiles</@s> setting is true, and the file is inside a sub-directory of the source root that is called <@c>.svn</@c>, then it chooses the "ignore" processing mode (note that it doesn't ignore conflict files, i.e., <@c>*.mine</@c> and <@c>*.r<@r>number</@r></@c>). Also, if <@s>ignoreTemporaryFiles</@s> setting is true, and the file name matches <@c>?*~</@c> or <@c>~?*</@c> or <@c>#?*#</@c> or <@c>%?*%</@c> or <@c>_.?*</@c>, or the extension (the part after the last dot in the file name) after converting to lowercase matches <@c>bak</@c> or <@c>~*</@c> or <@c>*~</@c> then it chooses the "ignore" processing mode. Note that the FMPP Ant task always sets these settings to <@c>false</@c>, so it does not interfere with the <@c>defaultExcludes</@c> parameter of Ant.</p>
 
 <p>Then, the processing mode is chosen with a sequence of <@a href="pathpattern.html">path patterns</@>, which is defined by the <@s>modes</@s> setting. The first path pattern in the sequence that matches the <@a href="overview.html#virtualPath">virtual path</@a> of the file, chooses the processing mode. If no matching path were found, then FMPP chooses the processing mode automatically:</p>
 <ul>

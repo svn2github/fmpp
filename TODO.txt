@@ -33,12 +33,6 @@ Really the TODO
 
 Misc:
  . [!!] Rework examples to use new null/missing handler operators, and ?substring
- . [!!] Add setting "ignoreSvnFiles". It should be like "ignoreCvsFiles", and should
-        be on by default.
- . [!!] History:
-   . New csv features
-   . Bugfix: csv loader UTF-8 BOM
-   . Bugfix: not modified files were processed
  . Native Windows exe instead of fmpp.bat+lcp.bat.
    Bat-s has idiot limitations.
  . Add a GUI front-end

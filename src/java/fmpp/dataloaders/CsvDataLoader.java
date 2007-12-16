@@ -78,7 +78,7 @@ public class CsvDataLoader extends FileDataLoader {
                     + "csv(filename) or csv(filename, options)");
         }
         Object obj;
-        CsvSequence cvss = new CsvSequence();
+        CsvSequence csvs = new CsvSequence();
         if (args.size() > 1) {
             Map options;
             obj = args.get(1);
@@ -98,10 +98,10 @@ public class CsvDataLoader extends FileDataLoader {
                                 + "\"headers\" and \"replaceHeaders\" options "
                                 + "can be used at once.");
                     }
-                    cvss.setExternalHeaderRow(
+                    csvs.setExternalHeaderRow(
                             DataLoaderUtil.getStringArrayOption(
                             opname, ent.getValue()));
-                    cvss.setHasHeaderRow(false);
+                    csvs.setHasHeaderRow(false);
                     aHeaderOpWasUsed = true;
                 } else if (opname.equals("replaceHeaders")) {
                     if (aHeaderOpWasUsed) {
@@ -109,44 +109,44 @@ public class CsvDataLoader extends FileDataLoader {
                                 + "\"headers\" and \"replaceHeaders\" options "
                                 + "can be used at once.");
                     }
-                    cvss.setExternalHeaderRow(
+                    csvs.setExternalHeaderRow(
                             DataLoaderUtil.getStringArrayOption(
                             opname, ent.getValue()));
-                    cvss.setHasHeaderRow(true);
+                    csvs.setHasHeaderRow(true);
                     aHeaderOpWasUsed = true;
                 } else if (opname.equals("normalizeHeaders")) {
-                    cvss.setNormalizeHeaders(DataLoaderUtil.getBooleanOption(
+                    csvs.setNormalizeHeaders(DataLoaderUtil.getBooleanOption(
                             opname, ent.getValue()));
                 } else if (opname.equals("trimCells")) {
-                    cvss.setTrimCells(DataLoaderUtil.getBooleanOption(
+                    csvs.setTrimCells(DataLoaderUtil.getBooleanOption(
                             opname, ent.getValue()));
                 } else if (opname.equals("emptyValue")) {
-                    cvss.setEmptyValues(
+                    csvs.setEmptyValues(
                             DataLoaderUtil.getStringArrayOption(
                             opname, ent.getValue(), true));
                 } else if (opname.equals("separator")) {
-                    cvss.setSeparator(DataLoaderUtil.getCharOption(
+                    csvs.setSeparator(DataLoaderUtil.getCharOption(
                             opname, ent.getValue()));
                 } else if (opname.equals("groupingSeparator")) {
-                    cvss.setGroupingSeparator(
+                    csvs.setGroupingSeparator(
                             DataLoaderUtil.getCharOption(
                                     opname, ent.getValue()));
                 } else if (opname.equals("decimalSeparator")) {
-                    cvss.setDecimalSeparator(
+                    csvs.setDecimalSeparator(
                             DataLoaderUtil.getCharOption(
                                     opname, ent.getValue()));
                 } else if (opname.equals(DataLoaderUtil.OPTION_NAME_ENCODING)) {
                     encoding = DataLoaderUtil.getStringOption(
                             opname, ent.getValue());
                 } else if (opname.equals("altTrue")) {
-                    cvss.setAltTrue(DataLoaderUtil.getStringOption(
+                    csvs.setAltTrue(DataLoaderUtil.getStringOption(
                             opname, ent.getValue()));
                 } else if (opname.equals("altFalse")) {
-                    cvss.setAltFalse(DataLoaderUtil.getStringOption(
+                    csvs.setAltFalse(DataLoaderUtil.getStringOption(
                             opname, ent.getValue()));
                 } else if (opname.equals("dateFormat")) {
                     try {
-                        cvss.setDateFormatPattern(
+                        csvs.setDateFormatPattern(
                                 DataLoaderUtil.getStringOption(
                                         opname, ent.getValue()));
                     } catch (IllegalArgumentException e) {
@@ -157,7 +157,7 @@ public class CsvDataLoader extends FileDataLoader {
                     }
                 } else if (opname.equals("timeFormat")) {
                     try {
-                        cvss.setTimeFormatPattern(
+                        csvs.setTimeFormatPattern(
                                 DataLoaderUtil.getStringOption(
                                         opname, ent.getValue()));
                     } catch (IllegalArgumentException e) {
@@ -168,7 +168,7 @@ public class CsvDataLoader extends FileDataLoader {
                     }
                 } else if (opname.equals("dateTimeFormat")) {
                     try {
-                        cvss.setDateTimeFormatPattern(
+                        csvs.setDateTimeFormatPattern(
                                 DataLoaderUtil.getStringOption(
                                         opname, ent.getValue()));
                     } catch (IllegalArgumentException e) {
@@ -188,7 +188,7 @@ public class CsvDataLoader extends FileDataLoader {
                 }
             }
         }
-        cvss.setTimeZone(engine.getTimeZone());
+        csvs.setTimeZone(engine.getTimeZone());
 
         Reader r = new BufferedReader(new InputStreamReader(data, encoding));
         
@@ -199,8 +199,8 @@ public class CsvDataLoader extends FileDataLoader {
             r.reset();
         }
         
-        cvss.load(r);
-        return cvss;
+        csvs.load(r);
+        return csvs;
     }
     
 }
