@@ -47,9 +47,6 @@ import fmpp.tdd.DataLoader;
  * directory (an engine level setting), or if data root is null, then relative
  * to the working directory (OS facility). The path can use slash (/) instead
  * of the OS specific separator char.
- *  
- * @author Dániel Dékány
- * @version $Id: FileDataLoader.java,v 1.3 2005/04/12 20:35:16 ddekany Exp $
  */
 public abstract class FileDataLoader implements DataLoader {
 

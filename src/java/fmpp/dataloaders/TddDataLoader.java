@@ -41,9 +41,6 @@ import fmpp.tdd.Interpreter;
  * Creates a <tt>Map</tt> based on a TDD file. The TDD file must contain a hash
  * or a hash addition such as:<br>
  * <code>foo:123, bar:456, properties(baaz.properties)</code> 
- *  
- * @author Dániel Dékány
- * @version $Id: TddDataLoader.java,v 1.3 2007/04/27 13:49:25 ddekany Exp $
  */
 public class TddDataLoader extends FileDataLoader {
     

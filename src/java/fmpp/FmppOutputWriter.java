@@ -38,9 +38,6 @@ import java.io.Writer;
 
 /**
  * The writer that FMPP uses to write the output files.
- *  
- * @author Dániel Dékány
- * @version $Id: FmppOutputWriter.java,v 1.5 2004/01/19 19:36:56 ddekany Exp $
  */
 abstract class FmppOutputWriter extends Writer {
     abstract void dropOutputFile() throws IOException;

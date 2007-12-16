@@ -43,9 +43,6 @@ import fmpp.util.StringUtil.ParseException;
 
 /**
  * Returns the value of an Ant property.
- *
- * @author Dániel Dékány
- * @version $Id: AntPropertyDataLoader.java,v 1.4 2004/01/02 00:29:25 ddekany Exp $
  */
 public class AntPropertyDataLoader extends AntDataLoader {
     

@@ -34,9 +34,6 @@ package fmpp.tdd;
 
 /**
  * Fragment extracted from a TDD expression.
- * 
- * @author Dániel Dékány
- * @version $Id: Fragment.java,v 1.3 2004/01/11 23:47:04 ddekany Exp $
  */
 public class Fragment {
     private final String text;

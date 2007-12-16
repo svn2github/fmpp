@@ -39,9 +39,6 @@ import java.io.Reader;
 /**
  * Reader that can insert a string before and after an encapsulated
  * character stream. 
- *  
- * @author Dániel Dékány
- * @version $Id: BorderedReader.java,v 1.5 2003/07/08 16:37:29 ddekany Exp $
  */
 public class BorderedReader extends Reader {
     private static final int PHASE_HEADER = 0;

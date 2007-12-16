@@ -54,9 +54,6 @@ import freemarker.log.Logger;
 
 /**
  * Ant task to process files selected by pattern sets.
- *  
- * @author Dániel Dékány
- * @version $Id: AntTask.java,v 1.40 2006/03/15 00:22:04 ddekany Exp $
  */
 public class AntTask extends org.apache.tools.ant.taskdefs.MatchingTask {
 

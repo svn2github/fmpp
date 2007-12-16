@@ -36,9 +36,6 @@ import fmpp.util.ExceptionCC;
 
 /**
  * The engine was not configured correctly. 
- *  
- * @author Dániel Dékány
- * @version $Id: IllegalConfigurationException.java,v 1.3 2003/12/20 01:27:50 ddekany Exp $
  */
 class IllegalConfigurationException extends ExceptionCC {
 

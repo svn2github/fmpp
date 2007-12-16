@@ -48,9 +48,6 @@ import fmpp.Engine;
  * invoked only once. If a data loader needs to maintain state during a
  * processing session (such as cache data, pool connections, etc.) it should use
  * engine attributes for that purpose (see {@link Engine#setAttribute}).
- *  
- * @author Dániel Dékány
- * @version $Id: DataLoader.java,v 1.5 2004/01/02 00:29:26 ddekany Exp $
  */
 public interface DataLoader {
     /**

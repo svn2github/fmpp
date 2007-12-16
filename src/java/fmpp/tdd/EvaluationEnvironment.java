@@ -34,9 +34,6 @@ package fmpp.tdd;
 
 /**
  * Callbacks that let you control the behaviour of TDD expression evaluation.
- * 
- * @author Dániel Dékány
- * @version $Id: EvaluationEnvironment.java,v 1.5 2003/12/31 06:48:33 ddekany Exp $
  */
 public interface EvaluationEnvironment {
     /**

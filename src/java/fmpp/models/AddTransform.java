@@ -44,9 +44,6 @@ import freemarker.template.TemplateTransformModel;
 
 /**
  * Adds/inserts an item to a {@link WritableSequence}.
- *  
- * @author Dániel Dékány
- * @version $Id: AddTransform.java,v 1.3 2003/07/08 16:37:29 ddekany Exp $
  */
 public class AddTransform
         extends TemplateModelUtils implements TemplateTransformModel {

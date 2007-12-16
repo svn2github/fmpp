@@ -40,9 +40,6 @@ import fmpp.Engine;
 
 /**
  * Returns the FMPP Ant task object. 
- *  
- * @author Dániel Dékány
- * @version $Id: AntTaskDataLoader.java,v 1.2 2004/01/02 00:29:25 ddekany Exp $
  */
 public class AntTaskDataLoader extends AntDataLoader {
     

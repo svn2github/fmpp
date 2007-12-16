@@ -44,9 +44,6 @@ import fmpp.util.FileUtil;
 
 /**
  * Designed to show the progress on console screen.
- *  
- * @author Dániel Dékány
- * @version $Id: ConsoleProgressListener.java,v 1.2 2004/01/19 19:36:56 ddekany Exp $
  */
 public class ConsoleProgressListener implements ProgressListener {
     private final PrintWriter out;

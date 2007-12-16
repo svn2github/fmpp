@@ -37,9 +37,6 @@ import java.io.OutputStream;
 
 /**
  * <code>OutputStream</code> that simply drops what it gets. 
- *  
- * @author Dániel Dékány
- * @version $Id: NullOutputStream.java,v 1.3 2004/08/15 20:31:36 ddekany Exp $
  */
 public class NullOutputStream extends OutputStream {
     

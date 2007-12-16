@@ -40,9 +40,6 @@ import java.io.File;
  * needed if the path may need or need not be resolved relatively to the
  * configuration base later, depending on factors that are not known when
  * the setting value is set.
- *  
- * @author Dániel Dékány
- * @version $Id: FileWithConfigurationBase.java,v 1.3 2004/01/11 23:47:04 ddekany Exp $
  */
 public class FileWithConfigurationBase
         extends FileWithSettingValue {

@@ -42,9 +42,6 @@ import fmpp.util.StringUtil;
 
 /**
  * Evaluates function calls as data loader invocations.
- * 
- * @author Dániel Dékány
- * @version $Id: DataLoaderEvaluationEnvironment.java,v 1.4 2003/12/31 06:48:33 ddekany Exp $
  */
 public class DataLoaderEvaluationEnvironment implements EvaluationEnvironment {
 

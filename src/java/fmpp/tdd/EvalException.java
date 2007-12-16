@@ -35,10 +35,6 @@ package fmpp.tdd;
 import fmpp.util.ExceptionCC;
 import fmpp.util.StringUtil;
 
-/**
- * @author Dániel Dékány
- * @version $Id: EvalException.java,v 1.5 2003/10/23 19:07:36 uid85408 Exp $
- */
 public class EvalException extends ExceptionCC {
     public EvalException(String message) {
         super(message);

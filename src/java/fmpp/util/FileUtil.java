@@ -43,9 +43,6 @@ import java.io.Reader;
 
 /**
  * Collection of file and path related functions.
- *  
- * @author Dániel Dékány
- * @version $Id: FileUtil.java,v 1.14 2007/04/27 12:45:28 ddekany Exp $
  */
 public class FileUtil {
     /**

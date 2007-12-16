@@ -42,7 +42,7 @@ To build a distribution (dist/fmpp_<version>.tar.gz and zip):
   strange convention to mark nightly releases.
 
 * Make sure you use the classes of Java2 platfrom 1.2 for the
-  compilation. Probably you need to create build.properties for this;
+  compilation. Certainly you need to create build.properties for this;
   see build.properties.sample.
 
 * Make sure of the proper version of freemarker.jar, oro.jar,

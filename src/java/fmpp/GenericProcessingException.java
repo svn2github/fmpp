@@ -36,9 +36,6 @@ import fmpp.util.ExceptionCC;
 
 /**
  * Problem has occured during the processing session. 
- *  
- * @author Dániel Dékány
- * @version $Id: GenericProcessingException.java,v 1.1 2004/01/19 20:07:05 ddekany Exp $
  */
 class GenericProcessingException extends ExceptionCC {
 

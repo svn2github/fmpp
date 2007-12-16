@@ -46,9 +46,6 @@ import fmpp.util.MiscUtil;
 
 /**
  * Designed to show the progress for Ant tasks.
- *  
- * @author Dániel Dékány
- * @version $Id: AntProgressListener.java,v 1.4 2004/01/20 12:05:00 ddekany Exp $
  */
 public class AntProgressListener implements ProgressListener {
     private int maxPathLength = 80 - 35;

@@ -220,9 +220,6 @@ import java.util.Set;
  * </pre>
  *  
  * <p>For more information please read the documentation of methods.
- * 
- * @author Dániel Dékány
- * @version $Id: ArgsParser.java,v 1.9 2005/02/19 14:36:33 ddekany Exp $
  */
 public class ArgsParser implements java.io.Serializable {
     private static final Comparator CMPRTR_OP_KEY =

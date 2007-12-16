@@ -39,9 +39,6 @@ import freemarker.template.TemplateModelIterator;
 /**
  * Collection variable implementation that wraps an array of already
  * wrapped objects directly.
- *  
- * @author Dániel Dékány
- * @version $Id: TemplateModelArrayCollection.java,v 1.3 2003/07/08 16:37:29 ddekany Exp $
  */
 public class TemplateModelArrayCollection implements TemplateCollectionModel {
     private TemplateModel[] array;

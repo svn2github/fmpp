@@ -41,9 +41,6 @@ import fmpp.ProgressListener;
  * Spins some counters regarding the work of the Engine.
  * All methods of this listener can be called from multiple threads. The current
  * state of counters can be read while the engine is working. 
- *  
- * @author Dániel Dékány
- * @version $Id: StatisticsProgressListener.java,v 1.2 2004/01/19 19:36:56 ddekany Exp $
  */
 public class StatisticsProgressListener implements ProgressListener {
     private int failed, executed, copied, rendered, warnings;

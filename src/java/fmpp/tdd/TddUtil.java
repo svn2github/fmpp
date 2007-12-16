@@ -39,9 +39,6 @@ import fmpp.util.MiscUtil;
 
 /**
  * Utility methods for TDD related tasks.
- * 
- * @author Dániel Dékány
- * @version $Id: TddUtil.java,v 1.7 2007/04/27 12:45:28 ddekany Exp $
  */
 public class TddUtil {
     /**

@@ -42,9 +42,6 @@ import freemarker.template.TemplateSequenceModel;
  * Sequence that wraps a <code>java.util.List</code> of already wrapped objects
  * directly, with minimal resource usage. Warning! It does not copy the original
  * list. 
- *  
- * @author Dániel Dékány
- * @version $Id: TemplateModelListSequence.java,v 1.2 2003/07/08 16:37:29 ddekany Exp $
  */
 public class TemplateModelListSequence implements TemplateSequenceModel {
     private List list;

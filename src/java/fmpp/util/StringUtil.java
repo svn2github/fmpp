@@ -44,9 +44,6 @@ import freemarker.template.TemplateDateModel;
 
 /**
  * Collection of string manipulation functions.
- *  
- * @author Dániel Dékány
- * @version $Id: StringUtil.java,v 1.24 2007/04/20 15:06:09 ddekany Exp $
  */
 public class StringUtil {
 

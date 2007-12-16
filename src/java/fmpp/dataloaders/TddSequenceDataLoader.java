@@ -41,9 +41,6 @@ import fmpp.tdd.Interpreter;
  * Creates a <tt>List</tt> based on a TDD file. The TDD file must contain a
  * TDD sequence such as:<br>
  * <code>"Big Joe", 1, [11, 22, 33], properties(foo.properties)</code> 
- *  
- * @author Dániel Dékány
- * @version $Id: TddSequenceDataLoader.java,v 1.2 2007/04/27 13:49:25 ddekany Exp $
  */
 public class TddSequenceDataLoader extends FileDataLoader {
     

@@ -46,9 +46,6 @@ import freemarker.template.TemplateModelException;
 /**
  * Hash variable that can be changed during template execution with the proper
  * method variables. 
- *  
- * @author Dániel Dékány
- * @version $Id: WritableHash.java,v 1.4 2005/10/20 22:14:35 ddekany Exp $
  */
 public class WritableHash
         extends WritableVariable implements TemplateHashModelEx {

@@ -64,9 +64,6 @@ import org.xml.sax.SAXParseException;
 
 /**
  * Returns a variable that exposes the content of an XML file.
- *
- * @author Dániel Dékány
- * @version $Id: XmlDataLoader.java,v 1.8 2004/03/01 01:02:28 ddekany Exp $
  */
 public class XmlDataLoader implements DataLoader {
     public static final String OPTION_REMOVE_COMMENTS = "removeComments";

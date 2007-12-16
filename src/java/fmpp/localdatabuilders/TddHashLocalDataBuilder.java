@@ -51,9 +51,6 @@ import fmpp.tdd.Interpreter;
  * <p>This local data builder is what <tt>localData</tt> setting uses, when the
  * last parameter to the <tt>case</tt> function is a hash, e.g.:<br>
  * <tt>localData: [case(sub/, {bgColor:green, doc:xml(data/foo.xml)})]</tt>.
- *  
- * @author Dániel Dékány
- * @version $Id: TddHashLocalDataBuilder.java,v 1.3 2004/01/11 23:47:04 ddekany Exp $
  */
 public class TddHashLocalDataBuilder extends CachingLocalDataBuilder {
     final Fragment fragment;

@@ -43,9 +43,6 @@ import freemarker.template.TemplateSequenceModel;
 
 /**
  * Creates a new, empty {@link WritableSequence}. 
- *  
- * @author Dániel Dékány
- * @version $Id: NewWritableSequenceMethod.java,v 1.4 2005/10/20 22:14:35 ddekany Exp $
  */
 public class NewWritableSequenceMethod implements TemplateMethodModelEx {
     

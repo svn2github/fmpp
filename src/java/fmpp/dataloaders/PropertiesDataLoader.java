@@ -38,9 +38,6 @@ import java.util.Properties;
 
 /**
  * Returns a Map based on a Java properties file. 
- *  
- * @author Dániel Dékány
- * @version $Id: PropertiesDataLoader.java,v 1.1 2003/10/23 19:07:35 uid85408 Exp $
  */
 public class PropertiesDataLoader extends FileDataLoader {
     protected Object load(InputStream data) throws IOException {

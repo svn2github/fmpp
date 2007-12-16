@@ -49,9 +49,6 @@ import java.util.Map;
  * directly with {@link Engine#addLocalDataBuilder}) receive notifications about
  * the events of the {@link Engine} if they implement interface
  * {@link ProgressListener}.
- *
- * @author Dániel Dékány
- * @version $Id: LocalDataBuilder.java,v 1.4 2005/02/19 14:36:32 ddekany Exp $
  */
 public interface LocalDataBuilder {
     /**

@@ -49,9 +49,6 @@ import fmpp.TemplateEnvironment;
  * 
  * <p>The stored <code>Map</code> will be deleted at the end of the processing
  * session.
- * 
- * @author Dániel Dékány
- * @version $Id: CachingLocalDataBuilder.java,v 1.3 2004/01/02 20:31:29 ddekany Exp $
  */
 public abstract class CachingLocalDataBuilder
         implements LocalDataBuilder, ProgressListener {

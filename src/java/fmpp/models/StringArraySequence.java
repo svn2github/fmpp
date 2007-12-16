@@ -42,9 +42,6 @@ import freemarker.template.TemplateSequenceModel;
  * Sequence variable implementation that wraps a String[] with relatively low
  * resource utilization. Warning: it does not copy the wrapped array, so do
  * not modify that after the model was made! 
- *
- * @author Dániel Dékány
- * @version $Id: StringArraySequence.java,v 1.2 2003/07/08 16:37:29 ddekany Exp $
  */
 public class StringArraySequence implements TemplateSequenceModel {
     private String[] stringArray;

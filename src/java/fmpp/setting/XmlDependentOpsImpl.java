@@ -44,9 +44,6 @@ import fmpp.dataloaders.XmlDataLoader;
  * Encapsulates operations that dependend on J2SE 1.4 XML related classes.
  * These are separated to prevent linkage errors when XML related
  * classes are not available.
- *  
- * @author Dániel Dékány
- * @version $Id: XmlDependentOpsImpl.java,v 1.2 2004/01/18 00:21:00 ddekany Exp $
  */
 class XmlDependentOpsImpl implements XmlDependentOps {
     

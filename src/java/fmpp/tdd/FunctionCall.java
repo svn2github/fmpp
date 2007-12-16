@@ -38,9 +38,6 @@ import java.util.List;
  * Symbolizes a TDD function call.
  * Function calls that are not evaluated during the evaluation of a TDD
  * expressions will be present in the result as the instances of this class.
- * 
- * @author Dániel Dékány
- * @version $Id: FunctionCall.java,v 1.4 2004/01/02 00:29:26 ddekany Exp $
  */
 public class FunctionCall {
     private final String name;

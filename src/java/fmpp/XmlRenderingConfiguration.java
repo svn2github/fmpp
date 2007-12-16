@@ -52,9 +52,6 @@ import fmpp.util.StringUtil;
  * 
  * <p>You must set a non-<code>null</code> <code>template</code> or set
  * <code>copy</code> to <code>true</code>. All other options are optional.  
- *  
- * @author Dániel Dékány
- * @version $Id: XmlRenderingConfiguration.java,v 1.1 2004/01/19 20:07:05 ddekany Exp $
  */
 public class XmlRenderingConfiguration {
     private String template;

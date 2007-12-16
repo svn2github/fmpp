@@ -40,9 +40,6 @@ import freemarker.template.TemplateScalarModel;
 
 /**
  * Constains utility methods for transform and method variable implementation.
- *  
- * @author Dániel Dékány
- * @version $Id: TemplateModelUtils.java,v 1.3 2003/10/21 14:17:30 ddekany Exp $
  */
 public class TemplateModelUtils {
     protected String strParam(Object m, String name)

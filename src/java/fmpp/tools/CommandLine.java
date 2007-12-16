@@ -66,9 +66,6 @@ import freemarker.log.Logger;
  * Command-line tool for preprocessing single files or entire directories.
  * 
  * <p>Report bugs and send suggestions to: ddekany at freemail dot hu.
- *  
- * @author Dániel Dékány
- * @version $Id: CommandLine.java,v 1.49 2006/03/15 00:22:04 ddekany Exp $
  */
 public class CommandLine {
     // Option keys:

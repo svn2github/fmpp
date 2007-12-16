@@ -39,9 +39,6 @@ import java.util.NoSuchElementException;
 /**
  * Iterates over multiple <code>List</code>-s. The elements of a list that was
  * added earlier will be iterated earlier.
- * 
- * @author Dániel Dékány
- * @version $Id: MultiListIterator.java,v 1.1 2004/01/01 02:46:36 ddekany Exp $
  */
 public class MultiListIterator implements Iterator {
     private List lists[] = new List[6];

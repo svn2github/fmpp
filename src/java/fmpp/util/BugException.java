@@ -35,9 +35,6 @@ package fmpp.util;
 
 /**
  * A bug has been detected.
- *  
- * @author Dániel Dékány
- * @version $Id: BugException.java,v 1.4 2003/12/21 18:49:18 ddekany Exp $
  */
 public class BugException extends RuntimeExceptionCC {
     

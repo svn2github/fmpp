@@ -37,9 +37,6 @@ package fmpp.setting;
  * Encapsulates operations that dependend on J2SE 1.4 XML related classes.
  * These are separated to prevent linkage errors when XML related
  * classes are not available.
- *  
- * @author Dániel Dékány
- * @version $Id: XmlDependentOps.java,v 1.3 2004/01/18 00:21:00 ddekany Exp $
  */
 interface XmlDependentOps {
     Object createCatalogResolver(

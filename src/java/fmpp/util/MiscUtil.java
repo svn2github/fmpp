@@ -46,9 +46,6 @@ import java.util.Map;
 
 /**
  * Miscellaneous utility methods. 
- *  
- * @author Dániel Dékány
- * @version $Id: MiscUtil.java,v 1.15 2005/02/26 20:29:59 ddekany Exp $
  */
 public class MiscUtil {
 

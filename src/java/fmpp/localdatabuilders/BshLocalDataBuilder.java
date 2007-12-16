@@ -65,9 +65,6 @@ import fmpp.util.StringUtil;
  *   <li><code>templateEnvironment</code>: the {@link fmpp.TemplateEnvironment}
  *       instance. 
  * </ul>
- * 
- * @author Dániel Dékány
- * @version $Id: BshLocalDataBuilder.java,v 1.4 2004/01/11 23:47:04 ddekany Exp $
  */
 public class BshLocalDataBuilder implements LocalDataBuilder {
     private static final String PARAM_ENDING = "ending";

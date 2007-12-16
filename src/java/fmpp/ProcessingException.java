@@ -38,9 +38,6 @@ import fmpp.util.ExceptionCC;
 
 /**
  * Error while performing the processing session. 
- *  
- * @author Dániel Dékány
- * @version $Id: ProcessingException.java,v 1.5 2003/12/20 01:27:50 ddekany Exp $
  */
 public class ProcessingException extends ExceptionCC {
     private final File sourceFile;

@@ -46,9 +46,6 @@ import fmpp.util.NullWriter;
 
 /**
  * The writer that FMPP uses to write file output.
- *  
- * @author Dániel Dékány
- * @version $Id: FmppFileOutputWriter.java,v 1.10 2005/01/28 00:02:35 ddekany Exp $
  */
 class FmppFileOutputWriter extends FmppOutputWriter {
     private static final int BUFFER_SIZE = 160; // large buffer slows down

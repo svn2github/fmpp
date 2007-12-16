@@ -46,9 +46,6 @@ import freemarker.template.TemplateTransformModel;
 /**
  * Changes items an item in a {@link WritableSequence} or sets/adds and
  * item to a {@link WritableHash}.
- *  
- * @author Dániel Dékány
- * @version $Id: SetTransform.java,v 1.3 2003/07/08 16:37:29 ddekany Exp $
  */
 public class SetTransform
         extends TemplateModelUtils implements TemplateTransformModel {

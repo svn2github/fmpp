@@ -1,8 +1,6 @@
 TODO
 ====
 
-$Id: TODO.txt,v 1.118 2007/08/20 12:58:25 ddekany Exp $
-
 *************************************************************************
 
   Unlike most open source projects, I will be honest about the state of
@@ -32,7 +30,6 @@ Really the TODO
 ---------------
 
 Misc:
- . [!!] Rework examples to use new null/missing handler operators, and ?substring
  . Native Windows exe instead of fmpp.bat+lcp.bat.
    Bat-s has idiot limitations.
  . Add a GUI front-end
@@ -43,8 +40,7 @@ Data loaders:
  . Add bsh(...) data loader: Evaluates a BSH file.
 
 Core:
- . [!!] Include FreeMarker 2.3.11
- . [!!] Improve pp directive error messages so that they write out if the parameter was null
+ . [!] Improve pp directive error messages so that they write out if the parameter was null
    (instead of complaining that it was missing or not of the proper type)
  . [!] Deep merging
    - Idea for the solution: "merger hash" type should be introduced. In TDD

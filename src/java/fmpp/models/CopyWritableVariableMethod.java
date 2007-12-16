@@ -39,9 +39,6 @@ import freemarker.template.TemplateModelException;
 
 /**
  * Creates a new, empty {@link WritableHash}.
- *
- * @author Dániel Dékány
- * @version $Id: CopyWritableVariableMethod.java,v 1.4 2007/04/20 15:06:08 ddekany Exp $
  */
 public class CopyWritableVariableMethod implements TemplateMethodModelEx {
     public Object exec(List args)

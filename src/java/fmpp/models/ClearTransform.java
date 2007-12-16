@@ -42,9 +42,6 @@ import freemarker.template.TemplateTransformModel;
 
 /**
  * Removes all items from a {@link WritableSequence} or {@link WritableHash}.
- *  
- * @author Dániel Dékány
- * @version $Id: ClearTransform.java,v 1.3 2003/07/08 16:37:29 ddekany Exp $
  */
 public class ClearTransform
         extends TemplateModelUtils implements TemplateTransformModel {

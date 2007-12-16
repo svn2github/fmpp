@@ -44,9 +44,6 @@ import freemarker.template.TemplateTransformModel;
 
 /**
  * Removes an item from a {@link WritableSequence} or {@link WritableHash}.
- *  
- * @author Dániel Dékány
- * @version $Id: RemoveTransform.java,v 1.3 2003/07/08 16:37:29 ddekany Exp $
  */
 public class RemoveTransform
         extends TemplateModelUtils implements TemplateTransformModel {

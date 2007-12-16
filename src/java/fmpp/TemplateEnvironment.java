@@ -79,9 +79,6 @@ import freemarker.template.TemplateTransformModel;
 
 /**
  * The runtime FMPP environment of an executing template.  
- *  
- * @author Dániel Dékány
- * @version $Id: TemplateEnvironment.java,v 1.30 2005/02/19 14:36:32 ddekany Exp $
  */
 public class TemplateEnvironment {
     private static final ThreadLocal THREAD_LOCAL = new ThreadLocal();

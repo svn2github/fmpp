@@ -46,9 +46,6 @@ import fmpp.util.StringUtil.ParseException;
 
 /**
  * Returns the Map of all Ant properties, or of the selected Ant properties.
- *  
- * @author Dániel Dékány
- * @version $Id: AntPropertiesDataLoader.java,v 1.4 2004/01/02 00:29:25 ddekany Exp $
  */
 public class AntPropertiesDataLoader extends AntDataLoader {
     

@@ -44,9 +44,6 @@ import fmpp.tdd.DataLoader;
  * Evaluates a BeanShell expression (looks like as Java).
  * The scrip has access to the <code>Engine</code> object by the
  * <code>engine</code> variable.
- *  
- * @author Dániel Dékány
- * @version $Id: EvalDataLoader.java,v 1.1 2003/10/23 19:07:35 uid85408 Exp $
  */
 public class EvalDataLoader implements DataLoader {
     public Object load(Engine e, List args) throws Exception {

@@ -109,9 +109,6 @@ import freemarker.template.Configuration;
  *
  * <p>You can execute the processing session described by the setting with
  * {@link #execute()}.
- *  
- * @author Dániel Dékány
- * @version $Id: Settings.java,v 1.22 2007/04/20 15:06:09 ddekany Exp $
  */
 public class Settings {
 

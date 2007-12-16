@@ -42,9 +42,6 @@ import freemarker.template.TemplateSequenceModel;
 /**
  * Sequence variable that can be changed during template execution with the
  * proper method variables.
- *  
- * @author Dániel Dékány
- * @version $Id: WritableSequence.java,v 1.4 2005/10/20 22:14:35 ddekany Exp $
  */
 public class WritableSequence
         extends WritableVariable implements TemplateSequenceModel {

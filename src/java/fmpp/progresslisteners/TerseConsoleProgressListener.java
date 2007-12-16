@@ -42,9 +42,6 @@ import fmpp.ProgressListener;
 /**
  * Designed to show the progress on console screen in a
  * very terse way (Doom loader... :)).   
- *  
- * @author Dániel Dékány
- * @version $Id: TerseConsoleProgressListener.java,v 1.2 2004/01/19 19:36:56 ddekany Exp $
  */
 public class TerseConsoleProgressListener implements ProgressListener {
     private final PrintWriter out;

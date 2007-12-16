@@ -52,9 +52,6 @@ import fmpp.util.StringUtil;
 /**
  * Writes detailed information about errors and warning messages into a file
  * or into any character stream.
- *  
- * @author Dániel Dékány
- * @version $Id: LoggerProgressListener.java,v 1.5 2006/02/25 20:35:21 ddekany Exp $
  */
 public class LoggerProgressListener implements ProgressListener {
     private static final String LOG_FILE_HEADER = "FMPP log file";

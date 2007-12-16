@@ -34,9 +34,6 @@ package fmpp.util;
 
 /**
  * There is a problem with the software environment. 
- *  
- * @author Dániel Dékány
- * @version $Id: InstallationException.java,v 1.1 2003/12/21 18:49:18 ddekany Exp $
  */
 public class InstallationException extends ExceptionCC {
 

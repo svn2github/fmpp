@@ -118,9 +118,6 @@ import freemarker.template.TemplateNodeModel;
  * objects as local data builders and progress listeners can maintain state
  * through multiple sessions. These objects should behave so that the output
  * files of a session is not influenced by earlier sessions.
- *  
- * @author Dániel Dékány
- * @version $Id: Engine.java,v 1.52 2007/11/23 12:03:51 ddekany Exp $
  */
 public class Engine {
     /** Processing mode: N/A */

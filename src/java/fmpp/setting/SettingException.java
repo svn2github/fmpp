@@ -37,9 +37,6 @@ import fmpp.util.ExceptionCC;
 /**
  * Bad setting or setting combination, or faliure when trying to setup the
  * engine with the settings.
- * 
- * @author Dániel Dékány
- * @version $Id: SettingException.java,v 1.3 2004/01/11 23:47:04 ddekany Exp $
  */
 public class SettingException extends ExceptionCC {
     

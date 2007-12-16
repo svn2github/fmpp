@@ -43,9 +43,6 @@ import java.io.StringWriter;
  * <p>Note: This class should be an
  * {@link fmpp.dataloaders.AbstractTextDataLoader} subclass, but it is not that
  * for backward compatibility.
- *
- * @author Dániel Dékány
- * @version $Id: TextDataLoader.java,v 1.2 2005/02/26 20:29:59 ddekany Exp $
  */
 public class TextDataLoader extends FileDataLoader {
     

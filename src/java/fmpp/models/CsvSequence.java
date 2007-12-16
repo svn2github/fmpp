@@ -78,9 +78,6 @@ import freemarker.template.TemplateSequenceModel;
  * 
  * <p><code>CsvSequence</code> is also a hash that contains one key:
  * <code>headers</code>. This is a sequence that stores the header names.
- *  
- * @author Dániel Dékány
- * @version $Id: CsvSequence.java,v 1.14 2007/08/20 12:58:26 ddekany Exp $
  */
 public class CsvSequence implements
         TemplateSequenceModel, TemplateHashModel {

@@ -49,9 +49,6 @@ import fmpp.util.StringUtil;
 
 /**
  * Evaluates TDD expressions.
- * 
- * @author Dániel Dékány
- * @version $Id: Interpreter.java,v 1.23 2007/04/20 15:06:09 ddekany Exp $
  */
 public class Interpreter {
     

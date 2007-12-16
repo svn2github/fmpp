@@ -54,9 +54,6 @@ import fmpp.util.StringUtil;
  * <code>now(<i>options</i>)</code>, where <i>options</i> is a hash as:
  * <code>{pattern:"yyyy-MM-dd HH:mm:ss"}</code> or
  * <code>{date:short, time:long, zone:"GMT+0"}</code>.
- * 
- * @author Dániel Dékány
- * @version $Id: NowDataLoader.java,v 1.1 2003/10/23 19:07:35 uid85408 Exp $
  */
 public class NowDataLoader implements DataLoader {
     public Object load(Engine engine, List args) throws Exception {

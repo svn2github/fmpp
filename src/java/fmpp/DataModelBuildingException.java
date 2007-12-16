@@ -38,9 +38,6 @@ import fmpp.util.ExceptionCC;
  * Error while trying to build the data-model for a template.
  * Usually you meet this exception as the root cause of a
  * {@link ProcessingException}
- *  
- * @author Dániel Dékány
- * @version $Id: DataModelBuildingException.java,v 1.3 2004/06/15 23:57:47 ddekany Exp $
  */
 public class DataModelBuildingException extends ExceptionCC {
     

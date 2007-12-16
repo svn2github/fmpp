@@ -39,9 +39,6 @@ import java.util.List;
 
 /**
  * Returns a string based on a plain text file.
- *
- * @author Dániel Dékány
- * @version $Id: AbstractTextDataLoader.java,v 1.1 2005/02/26 20:35:20 ddekany Exp $
  */
 public abstract class AbstractTextDataLoader extends FileDataLoader {
     

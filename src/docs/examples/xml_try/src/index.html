@@ -54,7 +54,7 @@ Prints an XML node tree as colored HTML.
         <li><tt>"${showXmlSource(node)}"</tt><#lt>
     <#elseif type == 'pi'>
         <#local nodeName = node?node_name>
-        <li><tt><font color=brown>&lt;?${nodeName?substring(4..nodeName?length)} ${showXmlSource(node)}?></font></tt><#lt>
+        <li><tt><font color=brown>&lt;?${nodeName?substring(4)} ${showXmlSource(node)}?></font></tt><#lt>
     <#elseif type == 'comment'>
         <li><tt><font color=green>&lt;!-- ${node} --></font></tt><#lt>
     <#else>

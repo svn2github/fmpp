@@ -41,9 +41,6 @@ import fmpp.TemplateEnvironment;
 /**
  * Trivial local data builder that returns the <code>Map</code> passed to
  * its constructor.
- *  
- * @author Dániel Dékány
- * @version $Id: MapLocalDataBuilder.java,v 1.2 2004/01/11 23:47:04 ddekany Exp $
  */
 public class MapLocalDataBuilder implements LocalDataBuilder {
     private final Map map;

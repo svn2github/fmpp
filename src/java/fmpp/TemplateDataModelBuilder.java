@@ -41,9 +41,6 @@ import freemarker.template.Template;
  * Contains callback to build the data-model for a template execution.
  * 
  * @deprecated Use {@link fmpp.LocalDataBuilder} instead.
- * 
- * @author Dániel Dékány
- * @version $Id: TemplateDataModelBuilder.java,v 1.3 2003/12/31 06:48:33 ddekany Exp $
  */
 public interface TemplateDataModelBuilder {
     

@@ -57,9 +57,6 @@ import freemarker.template.TemplateTransformModel;
  *   <li>img: Same as HTML img, but automatically calculates the width and/or
  *       height attributes if they are missing.
  * </ul> 
- *  
- * @author Dániel Dékány
- * @version $Id: HtmlUtilsDataLoader.java,v 1.2 2007/08/20 12:58:26 ddekany Exp $
  */
 public class HtmlUtilsDataLoader implements DataLoader {
     private boolean xHtml = false;

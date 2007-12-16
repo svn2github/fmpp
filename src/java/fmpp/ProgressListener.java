@@ -54,9 +54,6 @@ import java.io.File;
  *   <li>Releasing the resources held by local data loaders and engine
  *       attributes when the session is finished.
  * </ul>
- * 
- * @author Dániel Dékány
- * @version $Id: ProgressListener.java,v 1.11 2005/01/26 21:57:02 ddekany Exp $
  */
 public interface ProgressListener {
     /** <code>Engine.process</code> has started the work. */

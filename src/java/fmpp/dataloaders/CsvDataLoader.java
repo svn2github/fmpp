@@ -62,9 +62,6 @@ import freemarker.template.TemplateModelException;
  * <p>Note: This class should be an
  * {@link fmpp.dataloaders.AbstractTextDataLoader} subclass, but it is not that
  * for backward compatibility.
- *  
- * @author Dániel Dékány
- * @version $Id: CsvDataLoader.java,v 1.6 2007/08/04 01:29:35 ddekany Exp $
  */
 public class CsvDataLoader extends FileDataLoader {
 

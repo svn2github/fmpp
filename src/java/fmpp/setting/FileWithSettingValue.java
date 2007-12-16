@@ -38,9 +38,6 @@ import java.io.File;
  * <code>File</code> that stores the original setting value (string) it was
  * constructed from. This extra information is needed, for example, to
  * display the content of a loaded configuration file for the user.
- *   
- * @author Dániel Dékány
- * @version $Id: FileWithSettingValue.java,v 1.3 2004/01/11 23:47:04 ddekany Exp $
  */
 public class FileWithSettingValue extends File {
     private final String settingValue;

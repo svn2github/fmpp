@@ -45,9 +45,6 @@ import freemarker.template.TemplateScalarModel;
 
 /**
  * Creates a new, empty {@link WritableHash}.
- *  
- * @author Dániel Dékány
- * @version $Id: NewWritableHashMethod.java,v 1.4 2005/10/20 22:14:35 ddekany Exp $
  */
 public class NewWritableHashMethod implements TemplateMethodModelEx {
     public Object exec(List arguments)

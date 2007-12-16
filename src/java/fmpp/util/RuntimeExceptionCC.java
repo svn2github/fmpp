@@ -40,9 +40,6 @@ import java.io.PrintWriter;
  * on earlier versions. Furthermore, in FMPP error messages, the message of this
  * exception is trusted (i.e. no need to print the class name), as it is inside
  * an <tt>fmpp.*</tt> package.
- *  
- * @author Dániel Dékány
- * @version $Id: RuntimeExceptionCC.java,v 1.4 2004/01/01 02:46:36 ddekany Exp $
  */
 public class RuntimeExceptionCC extends RuntimeException {
     private Throwable cause;

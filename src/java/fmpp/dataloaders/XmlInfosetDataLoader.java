@@ -48,9 +48,6 @@ import org.xml.sax.SAXException;
  * the W3C XML infoset approach.
  * 
  * @deprecated Use {@link XmlDataLoader} instead.
- *  
- * @author Dániel Dékány
- * @version $Id: XmlInfosetDataLoader.java,v 1.2 2004/01/18 00:21:00 ddekany Exp $
  */
 public class XmlInfosetDataLoader extends FileDataLoader {
     protected Object load(InputStream data)

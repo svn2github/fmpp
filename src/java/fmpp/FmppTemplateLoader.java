@@ -44,9 +44,6 @@ import freemarker.cache.TemplateLoader;
 /**
  * A <code>TemplateLoader</code> that uses files in a specified directory as the
  * source of templates.
- *  
- * @author Dániel Dékány
- * @version $Id: FmppTemplateLoader.java,v 1.4 2004/03/01 01:02:28 ddekany Exp $
  */
 class FmppTemplateLoader implements TemplateLoader {
     private static final boolean SEP_IS_SLASH = File.separatorChar == '/';

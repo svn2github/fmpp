@@ -42,9 +42,6 @@ import fmpp.util.RuntimeExceptionCC;
 
 /**
  * Abstract base class of Ant related data loaders.
- *  
- * @author Dániel Dékány
- * @version $Id: AntDataLoader.java,v 1.1 2004/01/02 07:30:41 ddekany Exp $
  */
 public abstract class AntDataLoader implements DataLoader {
     /**

@@ -45,9 +45,6 @@ import fmpp.util.StringUtil;
  * Returns a sequence of strings based on a plain text file, where the specified
  * symbol is used as separator. For more information please read the FMPP
  * Manual.
- *
- * @author Dániel Dékány
- * @version $Id: SlicedTextDataLoader.java,v 1.1 2005/02/26 20:29:59 ddekany Exp $
  */
 public class SlicedTextDataLoader extends AbstractTextDataLoader {
 
