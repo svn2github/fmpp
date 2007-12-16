@@ -33,7 +33,6 @@ Really the TODO
 
 Misc:
  . [!!] Rework examples to use new null/missing handler operators, and ?substring
- . [!!] Switch to SVN
  . [!!] Add setting "ignoreSvnFiles". It should be like "ignoreCvsFiles", and should
         be on by default.
  . [!!] History:
