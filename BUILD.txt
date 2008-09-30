@@ -48,6 +48,10 @@ To build a distribution (dist/fmpp_<version>.tar.gz and zip):
 * Make sure of the proper version of freemarker.jar, oro.jar,
   bsh.jar, and resolver.jar is in the lib directory.
 
+* Check if the dependency version ranges are up-to-date in the
+  Maven POM (it's embedded into the build.xml), expecially the
+  FreeMarker version number.
+
 * The test suite must be passed successfully. Run "ant test".
 
 * Make sure of the proper version of FreeMarker documentation is in
