@@ -30,6 +30,7 @@ Really the TODO
 ---------------
 
 Misc:
+ . [!!] Fix reported typos (see in the bug tracker)
  . Native Windows exe instead of fmpp.bat+lcp.bat.
    Bat-s has idiot limitations.
  . Add a GUI front-end
