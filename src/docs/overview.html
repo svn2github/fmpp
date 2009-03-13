@@ -79,11 +79,11 @@
 
 <@sect title="Real paths" anchor="realPath">
 
-<p>Paths that naviage in the real file system (not in a <@a '#virtualPath'>virtual file systems</@a>) are called <@e>real paths</@e>. Real paths always use the native path format of the host operating system. However, Windows users can and should use slash (<@c>/</@c>) instead of backslash (<@c>\</@c>), to keep UN*X compliance, and to avoid escaping issues.</p>
+<p>Paths that navigate in the real file system (not in a <@a '#virtualPath'>virtual file systems</@a>) are called <@e>real paths</@e>. Real paths always use the native path format of the host operating system. However, Windows users can and should use slash (<@c>/</@c>) instead of backslash (<@c>\</@c>), to keep UN*X compliance, and to avoid escaping issues.</p>
 
 <p>Real paths are used in these cases:</p>
 <ul>
-  <li>For setting values that store a path (or paths), such as <@s>sourceRoot</@s> and <@s>outputRoot</@s>. Relative paths in these settings are resolved relatively to the, so called, <@e>configuratuin base</@e> (unless explicitly stated otherwise for a certain setting). If the setting value comes from a configuration file, then it is the directory that contains the configuration file (however, this can be overridden with the <@s>configurationBase</@s> setting). If the value comes from other source (such as from a command-line argument), then the front-end specifies what the configuration base is for that setting value (see the documentation of the front-end).
+  <li>For setting values that store a path (or paths), such as <@s>sourceRoot</@s> and <@s>outputRoot</@s>. Relative paths in these settings are resolved relatively to the, so called, <@e>configuration base</@e> (unless explicitly stated otherwise for a certain setting). If the setting value comes from a configuration file, then it is the directory that contains the configuration file (however, this can be overridden with the <@s>configurationBase</@s> setting). If the value comes from other source (such as from a command-line argument), then the front-end specifies what the configuration base is for that setting value (see the documentation of the front-end).
   
   <li>For data loaders that load files, as <@c>csv(data/birds.csv)</@c>. If the path is relative, then it is relative to the <@s>dataRoot</@s>, which defaults to the <@s>sourceRoot</@s>. Note that the usage of <@c>/</@c> instead of the native path separator (as backslash) is always allowed and recommended here.
 

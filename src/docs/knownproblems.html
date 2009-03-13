@@ -11,7 +11,7 @@
   
   <li><p>In some rare cases, log file tells that the processing session has finished successfully, but FMPP still terminates with error. (Note that in these cases, the output files are OK, just some tricky problem occurred later.) Or, FMPP terminates with error in an early stage, and there is nothing in the log file. The reason of these problems is that FMPP has no real logging,  but it uses the processing event listener feature to implement log file creation, which is inadequate for this purpose. Adding real logging is on the TODO list...</p></li>
   
-  <li><p>The boundary of output file changes (when you switch to anouther output file while still executing the same template file, for example with <@c>pp.changeOutputFile</@c>) can be inaccurate if the FreeMarker transform (filter) in use doesn't always obey flush instruction. Note that I have never actually run into this problem, but it theoretically exists. Workaround: Don't use highly antisocial transforms, try to change output file on places where the transform can flush, or close the transform block before invoking the <@c>pp</@c> directive that changes output file.</p></li>
+  <li><p>The boundary of output file changes (when you switch to another output file while still executing the same template file, for example with <@c>pp.changeOutputFile</@c>) can be inaccurate if the FreeMarker transform (filter) in use doesn't always obey flush instruction. Note that I have never actually run into this problem, but it theoretically exists. Workaround: Don't use highly antisocial transforms, try to change output file on places where the transform can flush, or close the transform block before invoking the <@c>pp</@c> directive that changes output file.</p></li>
 </ul>
 
 </@page>

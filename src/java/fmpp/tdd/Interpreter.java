@@ -654,6 +654,13 @@ public class Interpreter {
                                 keyP);
                     }
                 }
+                
+                if (p == ln) {
+                    throw newSyntaxError(
+                            "The key must be followed by a value because "
+                            + "colon was used.", keyP);
+                }
+                
                 Object o2;
                 boolean done = false;
                 try {
@@ -1053,7 +1060,7 @@ public class Interpreter {
             }
         }
         if (b == p) {
-            throw newSyntaxError("An expression is expected here.", b);
+            throw newSyntaxError("Unexpected character.", b);
         } else {
             String s = tx.substring(b, p);
             int funcP = b;
@@ -1243,7 +1250,7 @@ public class Interpreter {
             }
         }
         if (b == p) {
-            throw newSyntaxError("An expression is expected here.", b);
+            throw newSyntaxError("Unexpected character.", b);
         } else {
             int oldP = p;
             c = skipWS();

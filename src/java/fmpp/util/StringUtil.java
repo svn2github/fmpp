@@ -267,7 +267,7 @@ public class StringUtil {
     }
 
     /**
-     *  Quotes string as Java language character, except quote characters,
+     *  Quotes character as Java language character, except quote characters,
      *  which are referred with name.
      */
     public static String jQuoteOrName(char c) {

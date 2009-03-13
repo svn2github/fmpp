@@ -109,10 +109,10 @@ public class FileUtil {
     }
     
     /**
-     * Copies a file; silently overwrites the destionation if already exists.
+     * Copies a file; silently overwrites the destination if already exists.
      * 
      * @param copyLMD tells if the last modification time of the original
-     *     file will be copyed too.
+     *     file will be copied too.
      */
     public static void copyFile(File src, File dst, boolean copyLMD)
             throws IOException {
