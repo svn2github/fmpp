@@ -7,6 +7,11 @@
     <property file="build.properties" />
 
     <property name="bootclasspath.path" value="${sun.boot.class.path}" />
+    <!-- Checking the correctness of the boot.classpath: -->
+    <available classpath="${bootclasspath.path}"
+        classname="java.lang.Object" ignoresystemclasses="true" 
+        property="bootclasspath.correct" />
+    
     <property name="freemarker.lib" value="lib/freemarker.jar" />
     <property name="oro.lib" value="lib/oro.jar" />
     <property name="bsh.lib" value="lib/bsh.jar" />
@@ -64,6 +69,13 @@
     </target>
 
     <target name="compile" depends="init" description="Compile Java source files">
+        <fail unless="bootclasspath.correct"><!--
+            -->The "boot.classpath" property value (${bootclasspath.path}) <!--
+            -->seems to be an incorrect boot classpath. Please fix it in <!--
+            -->the &lt;projectDir>/build.properties file, or wherever you <!--
+            -->set it.<!--
+        --></fail>
+      
         <mkdir dir="build/compile" />
         <echo>Compling classes using boot classpath ${bootclasspath.path}</echo>
         <javac
