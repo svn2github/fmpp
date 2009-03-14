@@ -705,6 +705,7 @@ public class Engine {
                             srcDir,
                             PMODE_NONE, null, null);
                 }
+                return true;
             }
         }
         
