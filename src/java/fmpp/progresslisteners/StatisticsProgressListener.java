@@ -76,8 +76,6 @@ public class StatisticsProgressListener implements ProgressListener {
             break;
         case EVENT_WARNING:
             warnings++;
-        case EVENT_IGNORING_DIR:
-            break;
         default:
             ; // ignore
         }

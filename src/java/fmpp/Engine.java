@@ -120,6 +120,7 @@ import freemarker.template.TemplateNodeModel;
  * files of a session is not influenced by earlier sessions.
  */
 public class Engine {
+
     /** Processing mode: N/A */
     public static final int PMODE_NONE = 0;
 
@@ -191,6 +192,8 @@ public class Engine {
 
     private static final String IGNOREDIR_FILE = "ignoredir.fmpp";
     
+    private static final String CREATEDIR_FILE = "createdir.fmpp";
+    
     private static final Set STATIC_FILE_EXTS = new HashSet();
     {
         String[] list = new String[] {
@@ -211,6 +214,7 @@ public class Engine {
     
     // Settins
     private File srcRoot, outRoot, dataRoot;
+    private boolean dontTraverseDirs;
     private Map freemarkerLinks = new HashMap();
     private boolean stopOnError = true;
     private Map data = new HashMap();
@@ -228,6 +232,7 @@ public class Engine {
     private ArrayList removePostfixes = new ArrayList();
     private ArrayList replaceExtensions = new ArrayList();
     private int skipUnchanged;
+    private boolean alwaysCrateDirs = false;
     private boolean ignoreCvsFiles = true;
     private boolean ignoreSvnFiles = true;
     private boolean ignoreTemporaryFiles = true;
@@ -630,15 +635,46 @@ public class Engine {
             return true;
         }
         
-        File[] dir = srcDir.listFiles();
-        for (int i = 0; i < dir.length; i++) {
-            File sf = dir[i];
-            String fn = sf.getName();
-            File df = new File(dstDir, fn);
-            if (sf.isDirectory()) {
-                processDir(sf, df);
-            } else {
-                processFile(sf, df, true);
+        String name = srcDir.getName();
+        if (ignoreCvsFiles) {
+            if (name.equals("CVS")
+                    || (!csPathCmp && name.equalsIgnoreCase("CVS"))) {
+                return true;
+            }
+        }
+        if (ignoreSvnFiles) {
+            if (name.equals(".svn")
+                    || (!csPathCmp && name.equalsIgnoreCase(".svn"))) {
+                return true;
+            }
+        }
+
+        if (alwaysCrateDirs || new File(srcDir, CREATEDIR_FILE).isFile()) {
+            if (!dstDir.exists()) {
+                if (!dstDir.mkdirs()) {
+                    throw new IOException(
+                            "Failed to create directory: "
+                            + dstDir.getAbsolutePath());
+                }
+                progListeners.notifyProgressEvent(
+                        this,
+                        ProgressListener.EVENT_CREATED_EMPTY_DIR,
+                        srcDir,
+                        PMODE_NONE, null, null);
+            }
+        }
+        
+        if (!dontTraverseDirs) {
+            File[] dir = srcDir.listFiles();
+            for (int i = 0; i < dir.length; i++) {
+                File sf = dir[i];
+                String fn = sf.getName();
+                File df = new File(dstDir, fn);
+                if (sf.isDirectory()) {
+                    processDir(sf, df);
+                } else {
+                    processFile(sf, df, true);
+                }
             }
         }
         
@@ -647,13 +683,34 @@ public class Engine {
     
     private boolean processFile(File sf, File df, boolean allowOutFAdj)
             throws IOException, ProcessingException {
-        if (currentTurn != getTurn(sf)) {
-            return false;
-        }           
         if (isDirMarkedWithIgnoreFile(
                 sf.getParentFile().getCanonicalFile())) {
             return true;
         }
+        
+        if (sf.getName().equalsIgnoreCase(CREATEDIR_FILE)) {
+            File srcDir = sf.getParentFile();
+            // Re-check with the comparison rules of the file-system
+            if (new File(srcDir, CREATEDIR_FILE).exists()) {
+                File dstDir = df.getParentFile();
+                if (!dstDir.exists()) {
+                    if (!dstDir.mkdirs()) {
+                        throw new IOException(
+                                "Failed to create directory: "
+                                + dstDir.getAbsolutePath());
+                    }
+                    progListeners.notifyProgressEvent(
+                            this,
+                            ProgressListener.EVENT_CREATED_EMPTY_DIR,
+                            srcDir,
+                            PMODE_NONE, null, null);
+                }
+            }
+        }
+        
+        if (currentTurn != getTurn(sf)) {
+            return false;
+        }           
         if (!processedFiles.add(sf)) {
             return true;
         }
@@ -681,7 +738,7 @@ public class Engine {
                                 && pmode == Engine.PMODE_COPY))) {
                 long dfl = df.lastModified();
                 long sfl = sf.lastModified();
-                if (df.exists() && dfl > 0 && sfl > 0 && dfl >= sfl) {
+                if (df.exists() && dfl > 0 && sfl > 0 && dfl == sfl) {
                     progListeners.notifyProgressEvent(
                             this,
                             ProgressListener.EVENT_SOURCE_NOT_MODIFIED,
@@ -1740,6 +1797,23 @@ public class Engine {
     }
 
     /**
+     * Sets the {@link Engine} should automatically process the files and
+     * directories inside a directory whose processing was asked through the
+     * public {@link Engine} API. Defaults to <code>true</code>. It is set to
+     * <code>false</code> by front-ends that explicitly specify the list of
+     * source files and source directories, rather than expecting the
+     * {@link Engine} to discover them.
+     */
+    public void setDontTraverseDirectories(boolean dontTraverseDirs) {
+        checkParameterLock();
+        this.dontTraverseDirs = dontTraverseDirs;
+    }
+
+    public boolean getDontTraverseDirectories() {
+        return dontTraverseDirs;
+    }
+    
+    /**
      * Sets what source file can be skipped if it was not modified after the
      * last modification time of the output file. Also, if the output is not
      * existing, the source file will be processed. Note that this feature will
@@ -1757,6 +1831,29 @@ public class Engine {
 
     public int getSkipUnchanged() {
         return skipUnchanged;
+    }
+    
+    /**
+     * Sets whether for source directories a corresponding output directory
+     * will be created even if no file output went into it. Defaults to
+     * <code>false</code>.
+     * 
+     * <p>Notes:
+     * <ul>
+     *    <li>Even if this is set to <tt>true</tt>, if
+     *        a directory contains an <tt>ignoredir.fmpp</tt> file, it will not
+     *        create output directory.
+     *    <li>If the directory contains a file called <tt>createdir.fmpp</tt>,
+     *        the directory will be created even if this setting is
+     *        <tt>false</tt>.
+     */
+    public void setAlwaysCreateDirectories(boolean enable) {
+        checkParameterLock();
+        alwaysCrateDirs = enable;
+    }
+
+    public boolean getAlwaysCreateDirectories() {
+        return alwaysCrateDirs;
     }
 
     /**

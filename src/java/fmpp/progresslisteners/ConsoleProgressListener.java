@@ -163,6 +163,22 @@ public class ConsoleProgressListener implements ProgressListener {
                 }
             }
             break;
+        case EVENT_CREATED_EMPTY_DIR:
+            if (!quiet) {
+                /* Rather don't log this... it's just confusing.
+                out.print("- Created empty directory: ");
+                try {
+                    out.println(
+                            FileUtil.compressPath(
+                                    FileUtil.getRelativePath(
+                                            engine.getSourceRoot(), src),
+                                    maxPathLength));
+                } catch (IOException exc) {
+                    out.println("???");
+                }
+                */
+            }
+            break;
         default:
             ; // ignore
         }

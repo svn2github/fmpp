@@ -148,6 +148,8 @@ public class Settings {
     public static final String OLD_NAME_REMOVE_POSTFIX = "removePostfix";
     public static final String NAME_REPLACE_EXTENSIONS = "replaceExtensions";
     public static final String OLD_NAME_REPLACE_EXTENSION = "replaceExtension";
+    public static final String NAME_ALWAYS_CREATE_DIRECTORIES
+            = "alwaysCreateDirectories";
     public static final String NAME_IGNORE_CVS_FILES = "ignoreCvsFiles";
     public static final String NAME_IGNORE_SVN_FILES = "ignoreSvnFiles";
     public static final String NAME_IGNORE_TEMPORARY_FILES
@@ -816,6 +818,7 @@ public class Settings {
         stdDef(NAME_REMOVE_EXTENSIONS, TYPE_SEQUENCE, true, true);
         stdDef(NAME_REMOVE_POSTFIXES, TYPE_SEQUENCE, true, true);
         stdDef(NAME_REPLACE_EXTENSIONS, TYPE_SEQUENCE, true, true);
+        stdDef(NAME_ALWAYS_CREATE_DIRECTORIES, TYPE_BOOLEAN, false, false);
         stdDef(NAME_IGNORE_CVS_FILES, TYPE_BOOLEAN, false, false);
         stdDef(NAME_IGNORE_SVN_FILES, TYPE_BOOLEAN, false, false);
         stdDef(NAME_IGNORE_TEMPORARY_FILES, TYPE_BOOLEAN, false, false);
@@ -853,6 +856,7 @@ public class Settings {
     private XmlDependentOps xmlDependentOps;
     private List progressListeners = new ArrayList();
     private Map engineAttributes = new HashMap();
+    private boolean dontTraverseDirs;
     
     // -------------------------------------------------------------------------
     // Public menthods
@@ -1345,6 +1349,15 @@ public class Settings {
     public void clearAttribues() {
         engineAttributes.clear();
     }
+
+    /** See {@link Engine#setDontTraverseDirectories(boolean)}. */
+    public void setDontTraverseDirectories(boolean dontTraverseDirs) {
+        this.dontTraverseDirs = dontTraverseDirs;
+    }
+    
+    public boolean getDontTraverseDirectories() {
+        return dontTraverseDirs;
+    }
     
     /**
      * Dumps the current content of this object for debugging purposes.
@@ -1530,6 +1543,8 @@ public class Settings {
         File f;
         int i;
         
+        eng.setDontTraverseDirectories(dontTraverseDirs);
+        
         b = (Boolean) get(NAME_EXPERT);
         if (b != null) {
             eng.setExpertMode(b.booleanValue());
@@ -1614,6 +1629,11 @@ public class Settings {
             eng.setStopOnError(b.booleanValue());
         }
 
+        b = (Boolean) get(NAME_ALWAYS_CREATE_DIRECTORIES);
+        if (b != null) {
+            eng.setAlwaysCreateDirectories(b.booleanValue());
+        }
+        
         b = (Boolean) get(NAME_IGNORE_CVS_FILES);
         if (b != null) {
             eng.setIgnoreCvsFiles(b.booleanValue());

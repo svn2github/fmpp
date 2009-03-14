@@ -5,13 +5,22 @@
 
   <p>Bugfixes:</p>
   <ul>
-    <li>Fixing some unintelligible TDD error messages</li>
-    <li>Some typos fixed in the documentation</li>
+    <li>Fixing bug that caused <@s>skipUnchanged</@s> to skip a file when the destination was newer than the source. Now it only skips files when the modification date of the source and destination files are exactly the same.</li>
+    <li>Fixing some TDD parser "crashes" occuring when parsing invalid TDD.</li>
+    <li>Preventing obviously useless traversing inside SVN and CVS directories.</li>
+    <li>Fixed some typos in the documentation.</li>
   </ul>
 
   <p>New features, improvements:</p>
   <ul>
-    <li>FreeMarker 2.3.16 is included</li>
+    <li>FMPP now can create empty directories using one of the two new features (reminder: FMPP creates output directories on-demand before an actual output file is created in them, hence it doesn't create empty directories):
+    <ul>
+      <li>If a directory file contains a file named <@c>createdir.fmpp</@c> then it will ensure that the containing directory will exist in the output as well. The <@c>createdir.fmpp</@c> file itself will not appear in the output (and its content is not read).
+      <li>New setting, <@s>alwaysCreateDirectories</@s>: If this is set to <@c>true</@c>, all processed directories will produce a corresponding output directory, even when that directory will be empty.
+    </ul>
+    <li>To follow the Ant conventions, now <@s>sourceRoot</@> can alternatively be specified with the <@c>srcdir</@c> attribute, and <@s>outputRoot</@s> with the <@c>destdir</@c> attribute of the Ant task.
+    <li>API: New JavaBean propery in <@c>fmpp.Engine</@c> and <@c>fmpp.setting.Settings</@c>: <@c>dontTraverseDirectories</@c>. It should be set to <@c>true</@c> by front-ends that explicitly specify the list of all source files and source directories, rather than expecting the <@c>Engine</@c> to discover them. Till now such front-ends only specified the list of files, so this property wasn't needed. However, to support the new <@c>alwaysCreateDirectories</@c> setting, now the list of directories should be passed as well, and hence the need for this new property.</li>
+    <li>Updated <@c>freemarker.jar</@c> and the included FreeMarker Manual to 2.3.15.</li>
   </ul>
 </@sect>
 

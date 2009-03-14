@@ -360,6 +360,10 @@ public class CommandLine {
                     .desc("Upper- and lower-case letters are considered as "
                             + "the same characters when comparing or matching "
                             + "paths. This is the default.");
+            ap.addOption(null, dn(Settings.NAME_ALWAYS_CREATE_DIRECTORIES))
+                    .propertyValue("true")
+                    .desc("Create output subdirectory even if it will remain "
+                            + "empty. Defaults to false.");
             ap.addOption(null, dn(Settings.NAME_IGNORE_CVS_FILES))
                     .implied()
                     .desc("Ignore CVS files in the source root directory. "

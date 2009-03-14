@@ -62,6 +62,9 @@ public class AntTask extends org.apache.tools.ant.taskdefs.MatchingTask {
     private String configuration;
     private boolean hasSourceFileAttr;
     private boolean antTaskFailOnError = true;
+    private Boolean alwaysCreateDirsAltName; 
+    private Boolean sourceRootAltName; 
+    private Boolean outputRootAltName; 
 
     public void setConfiguration(File outputFile) {
         configuration = outputFile.getAbsolutePath();
@@ -87,6 +90,21 @@ public class AntTask extends org.apache.tools.ant.taskdefs.MatchingTask {
     }
 
     public void setOutputRoot(File outputRoot) {
+        setOutputRoot_common(outputRoot, false);
+    }
+    
+    public void setDestDir(File outputRoot) {
+        setOutputRoot_common(outputRoot, true);
+    }
+    
+    public void setOutputRoot_common(File outputRoot, boolean alt) {
+        Boolean oAlt = alt ? Boolean.TRUE : Boolean.FALSE;
+        if (outputRootAltName != null && outputRootAltName != oAlt) {
+            throw new IllegalArgumentException(
+                    "Can't use synonymous attributes together: "
+                    + "outputroot and destdir");
+        }
+        outputRootAltName = oAlt;
         initialOps.setProperty(
                 Settings.NAME_OUTPUT_ROOT, outputRoot.getAbsolutePath());
     }
@@ -99,6 +117,21 @@ public class AntTask extends org.apache.tools.ant.taskdefs.MatchingTask {
     }
 
     public void setSourceRoot(File sourceRoot) {
+        setSourceRoot_common(sourceRoot, false);
+    }
+
+    public void setSrcDir(File sourceRoot) {
+        setSourceRoot_common(sourceRoot, true);
+    }
+
+    public void setSourceRoot_common(File sourceRoot, boolean alt) {
+        Boolean oAlt = alt ? Boolean.TRUE : Boolean.FALSE;
+        if (sourceRootAltName != null && sourceRootAltName != oAlt) {
+            throw new IllegalArgumentException(
+                    "Can't use synonymous attributes together: "
+                    + "sourceroot and srcdir");
+        }
+        sourceRootAltName = oAlt;
         initialOps.setProperty(
                 Settings.NAME_SOURCE_ROOT, sourceRoot.getAbsolutePath());
     }
@@ -155,6 +188,31 @@ public class AntTask extends org.apache.tools.ant.taskdefs.MatchingTask {
         initialOps.setProperty(Settings.NAME_EXPERT, String.valueOf(expert));
     }
 
+    /**
+     * Same as {@link #setAlwaysCreateDirectories(boolean)}; added as this name
+     * is closer to the Ant naming conventions.
+     */
+    public void setAlwaysCreateDirs(boolean copy) {
+        setAlwaysCreateDirs_common(copy, true);
+    }
+    
+    public void setAlwaysCreateDirectories(boolean copy) {
+        setAlwaysCreateDirs_common(copy, false);
+    }
+
+    private void setAlwaysCreateDirs_common(boolean copy, boolean alt) {
+        Boolean oAlt = alt ? Boolean.TRUE : Boolean.FALSE;
+        if (alwaysCreateDirsAltName != null
+                && alwaysCreateDirsAltName != oAlt) {
+            throw new IllegalArgumentException(
+                    "Can't use synonymous attributes together: "
+                    + "alwaysCreateDirs and alwaysCreateDirectories");
+        }
+        alwaysCreateDirsAltName = oAlt;
+        initialOps.setProperty(
+                Settings.NAME_ALWAYS_CREATE_DIRECTORIES, String.valueOf(copy));
+    }
+    
     public void setLocale(String locale) {
         initialOps.setProperty(Settings.NAME_LOCALE, locale);
     }
@@ -166,9 +224,9 @@ public class AntTask extends org.apache.tools.ant.taskdefs.MatchingTask {
         }
     }
 
-    public void setAppendLogFile(boolean expert) {
+    public void setAppendLogFile(boolean append) {
         initialOps.setProperty(
-                Settings.NAME_APPEND_LOG_FILE, String.valueOf(expert));
+                Settings.NAME_APPEND_LOG_FILE, String.valueOf(append));
     }
 
     public void setModes(String mode) {
@@ -437,24 +495,26 @@ public class AntTask extends org.apache.tools.ant.taskdefs.MatchingTask {
                                 + "\" is not set.");
                     }
                     File scannerBase = dir != null ? dir : sourceRoot;
-                    String[] scanResults = getDirectoryScanner(scannerBase)
-                            .getIncludedFiles();
-                    /* A little optimization...
-                    if (scanResults.length == 0) {
-                        // Nothing to process
-                        if (!quiet) {
-                            this.log("No file to process was selected; "
-                                    + "FMPP was not invoked.");
-                        }
-                        return;
-                    }
-                    */
-                    String[] sources = new String[scanResults.length];
+                    
+                    String[] scanResults = MiscUtil.add(
+                        getDirectoryScanner(scannerBase)
+                                .getIncludedFiles(),
+                        getDirectoryScanner(scannerBase)
+                                .getIncludedDirectories());
+                    String[] sourceFiles = new String[scanResults.length];
                     for (int i = 0; i < scanResults.length; i++) {
                         File f = new File(scannerBase, scanResults[i]);
-                        sources[i] = f.getAbsolutePath();
+                        sourceFiles[i] = f.getAbsolutePath();
                     }
-                    ss.add(Settings.NAME_SOURCES, sources);
+                    ss.add(Settings.NAME_SOURCES, sourceFiles);
+                    
+                    scanResults = getDirectoryScanner(scannerBase)
+                            .getIncludedDirectories();
+                    String[] sourceDirectories = new String[scanResults.length];
+                    for (int i = 0; i < scanResults.length; i++) {
+                        File f = new File(scannerBase, scanResults[i]);
+                        sourceDirectories[i] = f.getAbsolutePath();
+                    }
                 }
             } catch (SettingException e) {
                 if (fileLogger != null) {
@@ -468,6 +528,7 @@ public class AntTask extends org.apache.tools.ant.taskdefs.MatchingTask {
                         "Failed to initialize FMPP engine.", e);
             }
 
+            ss.setDontTraverseDirectories(true);
             try {
                 ss.execute();
                 if (antProgressListener.getErrorCount() != 0) {

@@ -45,7 +45,7 @@ import freemarker.template.Template;
 public interface TemplateDataModelBuilder {
     
     /**
-     * Returns the top-level variables that will be avilable for the template.
+     * Returns the top-level variables that will be available for the template.
      */
     Map build(Engine e, Template template, File src)
             throws Exception;

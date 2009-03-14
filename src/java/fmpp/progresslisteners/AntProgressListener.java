@@ -179,6 +179,23 @@ public class AntProgressListener implements ProgressListener {
             }
             antTask.log(message.toString());
             break;
+        case EVENT_CREATED_EMPTY_DIR:
+            if (quiet) {
+                break;
+            }
+            
+            /* Rather don't log this... it's just confusing.
+            message.append("- Created empty directory:");
+            try {
+                message.append(
+                        FileUtil.compressPath(FileUtil.getRelativePath(
+                                engine.getSourceRoot(), src), maxPathLength));
+            } catch (IOException exc) {
+                message.append("???");
+            }
+            antTask.log(message.toString());
+            */
+            break;
         case EVENT_END_PROCESSING_SESSION:
             if (error != null) {
                 antTask.log(

@@ -70,6 +70,9 @@ public interface ProgressListener {
     
     /** A source directory has been ignored (skipped.) */
     int EVENT_IGNORING_DIR = 5;
+
+    /** An empty directory was created due to the copyEmptyDirs setting. */
+    int EVENT_CREATED_EMPTY_DIR = 8;
     
     /**
      * A warning message has been received from a template or from the
@@ -90,8 +93,8 @@ public interface ProgressListener {
      * as far as the listener is added to a single <code>Engine</code> instance
      * only. 
      *   
-     * @param engine The engine instance where the event has occured.
-     * @param event The code of the envent: an <code>EVENT_...</code> constant.
+     * @param engine The engine instance where the event has occurred.
+     * @param event The code of the event: an <code>EVENT_...</code> constant.
      *     As new event types can be introduced with new FMPP versions (even if
      *     it happens very seldom), a progress listener implementation should
      *     survive events that it does not understand. That is, it must not stop

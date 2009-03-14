@@ -367,5 +367,15 @@ public class MiscUtil {
                     + " to integer number.");
         }
    }
-    
+
+    /**
+     * Concatenates two arrays.
+     */
+    public static String[] add(String[] a1, String[] a2) {
+        String[] r = new String[a1.length + a2.length];
+        System.arraycopy(a1, 0, r, 0, a1.length);
+        System.arraycopy(a2, 0, r, a1.length, a2.length);
+        return r;
+    }
+        
 }

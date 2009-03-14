@@ -41,7 +41,7 @@ import fmpp.ProgressListener;
 
 /**
  * Designed to show the progress on console screen in a
- * very terse way (Doom loader... :)).   
+ * very terse way (prints a symbol for each processed file).   
  */
 public class TerseConsoleProgressListener implements ProgressListener {
     private final PrintWriter out;

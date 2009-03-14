@@ -347,6 +347,8 @@
             </project>
         ]]></echo>
    
+        <jar destfile="build/maven-source-attachment.jar" basedir="src/java"  />
+   
         <artifact:install-provider artifactId="wagon-ssh" version="1.0-beta-2"/>
    
         <input
@@ -381,6 +383,7 @@
                />
             </remoteRepository>
             <pom file="build/pom.xml" />
+            <attach file="build/maven-source-attachment.jar" classifier="sources" />
         </artifact:deploy>
         
         <echo>**********************************************</echo>

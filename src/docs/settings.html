@@ -44,6 +44,7 @@
 <@setting name="sourceRoot" type="string (path)" default="" merging=false clShort="S" />
 <@setting name="outputRoot" type="string (path)" default="" merging=false clShort="O" />
 <@setting name="dataRoot" type="string (path)" default="ex:the value of <@s\gsourceRoot</@s\g" merging=false />
+<@setting name="alwaysCreateDirectories" type="boolean" default="false" merging=false />
 
 <p>In the typical use case FMPP processes all files in the directory specified by <@s>sourceRoot</@s>, and writes the result into the directory specified by the <@s>outputRoot</@s> directory. These two root directories serve as the root directory of two virtual file system that stores the source files and the output files respectively. This means that all files that FMPP processes must be inside the source root directory, and it is guaranteed that all output file will be inside the output root directory (as far as you do not by-pass FMPP intentionally with custom extensions). You can't leave the roots by moving upward with <@c>..</@>-s. Also, when you refer to files or directories in the templates as the parameters of predefined directives, absolute paths like <@c>/example.html</@c> are interpreted relatively to the source or output root directories (except if the parameter deals with data files).</p>
 
@@ -51,13 +52,13 @@
 
 <p>The directory specified by <@s>dataRoot</@s> is interesting for data loaders. If a data loader gets a relative path, then it should interpret that relatively to the data root directory. If it gets an absolute path, it should interpret that as is. As you can see from this, data root directory does not try to mimic a file system root, as the other two root directories. Data loaders can reach files outside the data root directory.</p>
 
-<p>By default, the data root is the same as the source root. This encourages the practice where you store the data files in the, say, <@c>data</@> subdirectory of the source root, and then mark that directory with a <@c>ignoredir.fmpp</@> file, so FMPP will not process the content of the directory. Thus, you keep all input together: data sources, templates and static files (as images).</p>
+<p>By default, the data root is the same as the source root. This encourages the practice where you store the data files in the, say, <@c>data</@> subdirectory of the source root, and then mark that directory with a <@c>ignoredir.fmpp</@> file (file content is irrelevant), so FMPP will not process the content of the directory. Thus, you keep all input together: data sources, templates and static files (as images).</p>
 
-<p>Notes:</p>
-<ul>
-  <li>It is possible to tell FMPP to process only certain files of the source root, not all of them; see the <@s>sources</@s> setting.
+<p>By default, no empty subdirectories will be created in the output root directory. More precisely, directories are created only on demand, when actual output files have to be created in them, hence normally you don't have empty directories in the output. However, this behavior can be changed with <@c>alwaysCreateDirectories</@c>; with that setting set to <@c>true</@c>, each source directory will produce a corresponding output directory (unless it contains an <@c>ignoredir.fmpp</@> file). Also, if a source directory contains a file named <@c>createdir.fmpp</@c> (file content is irrelevant) then the corresponding output directory will be created, regardless of the <@c>alwaysCreateDirectories</@c> setting (unless, again, <@c>ignoredir.fmpp</@> is also present)</p>
+
+<p>It is possible to tell FMPP to process only certain files and directories of the source root, not all of them; see the <@s>sources</@s> setting.<p>
   
-  <li>No empty subdirectories will be created in the output root directory. More precisely, a directory in the output root is created only on demand, when an output file has to be created in it.
+  <li>
 </ul>
 
 </@sect>
@@ -561,7 +562,9 @@ return res;
 <@sect title="Handling errors">
 <@setting name="stopOnError" type="boolean" default="true" clShort="s, c" merging=false />
 
-<p>Be default when FMPP encounters problem during the processing of a file, it terminates the whole processing session with the error. It can be annoying if you have many files, because you have to restart the whole session and wait until the session reaches another bungled template, again and again, until you have fixed all templates. If you change this setting to <@c>false</@c>, FMPP will not stop on the errors, just skips the problematic source file and continues the processing session with the next source file. You should use <@s>logFile</@s> together in this case, so you can later digest all problems occured during the processing session.</p>
+<p>Be default when FMPP encounters problem during the processing of a source file, it terminates the whole processing session with the error. It can be annoying if you have many bad files, because you have to restart the whole session and wait until the session reaches another bungled template (or other kind of problematic source file), again and again, until you have fixed all of them. If you change this setting to <@c>false</@c>, FMPP will not stop on the errors, just skips the problematic source file and continues the processing session with the next source file. You should use <@s>logFile</@s> together in this case, so you can later digest all problems occured during the processing session.</p>
+
+<p>Note that this settings will only suppress errors that occur during the processing of source files. It will not suppress errors like, for example, bad data files (unless it's loaded in a template with <@c>pp.data</@c>) or invalid setting values.</p>
 
 </@sect>
 
