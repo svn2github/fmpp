@@ -335,7 +335,7 @@
                   <groupId>org.freemarker</groupId>
                   <artifactId>freemarker</artifactId>
                   <!-- 2.4 will be somewhat non-BC -->
-                  <version>[2.3.11,2.4)</version>
+                  <version>[2.3.15,2.4)</version>
                 </dependency>
                 <dependency>
                   <groupId>oro</groupId>

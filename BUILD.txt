@@ -49,21 +49,19 @@ To build a distribution (dist/fmpp_<version>.tar.gz and zip):
   bsh.jar, and resolver.jar is in the lib directory.
 
 * Check if the dependency version ranges are up-to-date in the
-  Maven POM (it's embedded into the build.xml), expecially the
+  Maven POM (it's embedded into the build.xml), especially the
   FreeMarker version number.
 
 * The test suite must be passed successfully. Run "ant test".
 
-* Make sure of the proper version of FreeMarker documentation is in
-  the src/docs/freemarker directory. (If you build the FreeMarker
-  documentation yourself, issue `ant all -Ddocgen.offline=true` in
-  the docgen module.)
+* Make sure of the proper version of FreeMarker documentation, which is
+  Manual + API javadoc, is in the src/docs/freemarker directory.
 
 * Make sure of you didn't polluted the FMPP directories with some
   temporary files (your ad-hoc tests, backups, etc.). If you left such
   files, they will be included in the distribution... Note that typical
-  trash files (*.bak, *.~*, SVN files, etc.) should be filtered out
-  automatically by the ant task.
+  trash like *.bak, *.~*, SVN files, etc. should be filtered out
+  automatically by Ant.
 
 * Run "ant dist"
 
