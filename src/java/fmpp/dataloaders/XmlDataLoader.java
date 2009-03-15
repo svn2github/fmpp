@@ -34,18 +34,13 @@ package fmpp.dataloaders;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import fmpp.Engine;
-import fmpp.tdd.DataLoader;
-import fmpp.util.StringUtil;
-import freemarker.ext.dom.NodeModel;
-import freemarker.template.TemplateNodeModel;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -62,6 +57,13 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
+import fmpp.Engine;
+import fmpp.tdd.DataLoader;
+import fmpp.util.MiscUtil;
+import fmpp.util.StringUtil;
+import freemarker.ext.dom.NodeModel;
+import freemarker.template.TemplateNodeModel;
+
 /**
  * Returns a variable that exposes the content of an XML file.
  */
@@ -69,6 +71,7 @@ public class XmlDataLoader implements DataLoader {
     public static final String OPTION_REMOVE_COMMENTS = "removeComments";
     public static final String OPTION_REMOVE_PIS = "removePIs";
     public static final String OPTION_NAMESPACE_AWARE = "namespaceAware";
+    public static final String OPTION_XINCLUDE_AWARE = "xincludeAware";
     public static final String OPTION_VALIDATE = "validate";
     public static final String OPTION_INDEX = "index";
     public static final String OPTION_XMLNS = "xmlns";
@@ -78,6 +81,7 @@ public class XmlDataLoader implements DataLoader {
         OPTION_NAMES.add(OPTION_REMOVE_COMMENTS);
         OPTION_NAMES.add(OPTION_REMOVE_PIS);
         OPTION_NAMES.add(OPTION_NAMESPACE_AWARE);
+        OPTION_NAMES.add(OPTION_XINCLUDE_AWARE);
         OPTION_NAMES.add(OPTION_VALIDATE);
         OPTION_NAMES.add(OPTION_INDEX);
         OPTION_NAMES.add(OPTION_XMLNS);
@@ -95,6 +99,7 @@ public class XmlDataLoader implements DataLoader {
         boolean removePIs = false;
         boolean removeComments = true;
         boolean namespaceAware = true;
+        boolean xincludeAware = false;
         boolean validate = engine.getValidateXml();
         Map xmlns = new HashMap();
         Object indexOp = null;
@@ -148,6 +153,13 @@ public class XmlDataLoader implements DataLoader {
                                 + "must be a boolean.");
                     }
                     namespaceAware = ((Boolean) opValue).booleanValue();
+                } else if (OPTION_XINCLUDE_AWARE.equals(opName)) {
+                    if (!(opValue instanceof Boolean)) {
+                        throw new IllegalArgumentException(
+                                "The value of option \"namespaceAware\" "
+                                + "must be a boolean.");
+                    }
+                    xincludeAware = ((Boolean) opValue).booleanValue();
                 } else if (OPTION_VALIDATE.equals(opName)) {
                     if (!(opValue instanceof Boolean)) {
                         throw new IllegalArgumentException(
@@ -206,7 +218,7 @@ public class XmlDataLoader implements DataLoader {
                 xmlFile = new File(engine.getDataRoot(), path);
             }
             doc = XmlDataLoader.loadXmlFile(
-                    engine, xmlFile, namespaceAware, validate);
+                    engine, xmlFile, namespaceAware, xincludeAware, validate);
         } else {
             doc = preLoadedDoc;
         }
@@ -274,8 +286,26 @@ public class XmlDataLoader implements DataLoader {
             Engine engine, File xmlFile,
             boolean namespaceAware, boolean validate)
             throws SAXException, IOException, ParserConfigurationException {
+        return loadXmlFile( engine, xmlFile, namespaceAware, false, validate);
+    }
+    
+    public static Document loadXmlFile(
+            Engine engine, File xmlFile,
+            boolean namespaceAware, boolean xincludeAware, boolean validate)
+            throws SAXException, IOException, ParserConfigurationException {
         DocumentBuilderFactory f = DocumentBuilderFactory.newInstance();
         f.setNamespaceAware(namespaceAware);
+        if (xincludeAware) {
+            try {
+                Method m = f.getClass().getMethod(
+                        "setXIncludeAware", new Class[]{Boolean.TYPE});
+                m.invoke(f, new Object[]{Boolean.TRUE});
+            } catch (Throwable e) {
+                throw new SAXException("It seems that your Java setup doesn't "
+                        + "support XML XInclude-es. Upgrading Java may helps."
+                        + "\nCause trace:\n" + MiscUtil.causeTrace(e));
+            }
+        }
         f.setValidating(validate);
         DocumentBuilder db = f.newDocumentBuilder();
         if (validate) {

@@ -2,7 +2,7 @@
 
 <@sect title="Things you must know about settings">
 
-<para>The basic definition of the "setting" term is <@a href="overview.html#settings">here...</@a>
+<p>The basic definition of the "setting" term is <@a href="overview.html#settings">here...</@a>
 
   <@sect title="The common characteristics of settings">
   
@@ -41,10 +41,10 @@
 </@sect>
 
 <@sect title="Directories">
-<@setting name="sourceRoot" type="string (path)" default="" merging=false clShort="S" />
-<@setting name="outputRoot" type="string (path)" default="" merging=false clShort="O" />
+<@setting name="sourceRoot" type="string (path)" default="" merging=false clShort="S" antAltAtt="srcdir" />
+<@setting name="outputRoot" type="string (path)" default="" merging=false clShort="O" antAltAtt="destdir" />
 <@setting name="dataRoot" type="string (path)" default="ex:the value of <@s\gsourceRoot</@s\g" merging=false />
-<@setting name="alwaysCreateDirectories" type="boolean" default="false" merging=false />
+<@setting name="alwaysCreateDirectories" type="boolean" default="false" merging=false antAltAtt="alwaysCreateDirs" />
 
 <p>In the typical use case FMPP processes all files in the directory specified by <@s>sourceRoot</@s>, and writes the result into the directory specified by the <@s>outputRoot</@s> directory. These two root directories serve as the root directory of two virtual file system that stores the source files and the output files respectively. This means that all files that FMPP processes must be inside the source root directory, and it is guaranteed that all output file will be inside the output root directory (as far as you do not by-pass FMPP intentionally with custom extensions). You can't leave the roots by moving upward with <@c>..</@>-s. Also, when you refer to files or directories in the templates as the parameters of predefined directives, absolute paths like <@c>/example.html</@c> are interpreted relatively to the source or output root directories (except if the parameter deals with data files).</p>
 
@@ -57,9 +57,6 @@
 <p>By default, no empty subdirectories will be created in the output root directory. More precisely, directories are created only on demand, when actual output files have to be created in them, hence normally you don't have empty directories in the output. However, this behavior can be changed with <@c>alwaysCreateDirectories</@c>; with that setting set to <@c>true</@c>, each source directory will produce a corresponding output directory (unless it contains an <@c>ignoredir.fmpp</@> file). Also, if a source directory contains a file named <@c>createdir.fmpp</@c> (file content is irrelevant) then the corresponding output directory will be created, regardless of the <@c>alwaysCreateDirectories</@c> setting (unless, again, <@c>ignoredir.fmpp</@> is also present)</p>
 
 <p>It is possible to tell FMPP to process only certain files and directories of the source root, not all of them; see the <@s>sources</@s> setting.<p>
-  
-  <li>
-</ul>
 
 </@sect>
 

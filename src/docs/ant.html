@@ -65,6 +65,8 @@
 <ul>
   <li><@a href="settings.html">All FMPP settings</@a> except <@s>sources</@s>, <@s>ignoreCvsFiles</@s>, <@s>ignoreSvnFiles</@s>, <@s>ignoreTemporaryFiles</@s>, <@s>echoFormat</@s>, <@s>snip</@s> and <@s>columns</@s>. If the setting value is of scalar type (as string, boolean, number) then just enter the value simply with Ant-ish syntax, not with TDD syntax. If the setting value is of more tricky type, as hash or sequence, then use TDD syntax for it. For hash settings the value is hash mode TDD, and for sequence setting it is sequence mode TDD, so the brackets should be omitted. The <@a href="configfile.html#configurationBase">configuration base</@a> for the setting values is the Ant project base directory.</li>
   
+  <li>To follow the Ant conventions, <@c>srcdir</@c> and <@c>destdir</@c> attribute names can be optionally used instead of <@c>sourceRoot</@c> and <@c>outputRoot</@c> attribute names. These are just alias names.</li>
+  
   <li>Configuration file handling:
     <ul>
       <li><@c>configuration</@c>: Loads a <@a href="configfile.html">configuration file</@a>. The setting values given with the parameters has higher precedence.</li>
@@ -94,6 +96,11 @@
 </ul>
 
 <p>Either the <@c>configuration</@c> parameter, or <@c>sourceRoot</@c>+<@c>outputRoot</@c> parameters, or <@c>sourceFile</@c>+<@c>outputFile</@c> parameters are required. All other parameters are optional. When you use <@c>configuration</@c>, any Ant task parameters can become optional, when the value of the coressponding settings are given in the configuration file.</p>
+
+<p><@e>Attention!</@e> When you specify the <@s>sources</@s> setting in a configuration file, its value will be added to the set of files and directories that the Ant task itself selects, which is, following the Ant tradition, by default all files and directories inside the source root. Thus, usually you will want to exclude all files in the Ant task, so only those specified in the configuration file will remain:
+<@prg>
+<fmpp configuration="config-with-sources-setting.fmpp" excludes="**/*" />
+</@prg>
 
 </@sect>
 

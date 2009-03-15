@@ -35,16 +35,14 @@ Misc:
  . Add a GUI front-end
 
 Data loaders:
- . [!!] Add XInclude support for XML loaders
- . [!] Add Relax NG validation support
- . [!] Add sql(...) data loader. See below in the Drafts section...
-   Also somehow integrate the database *schema* loader contributed.
- . ? Add add(...) data loader for string and sequence concatenation, and arithmetical addition.
+ . [!] Add sql(...) data-loader. See below in the Drafts section...
+   Also somehow integrate the database *schema* loader that was contributed.
+ . [!] Post-DTD era validation: W3C XML Schema and Relax NG validation, pre-loaded schema validation
+ . [!] Add xmlDir data-loader (loads all XML files in a directory)
+ . ? Add add(...) data-loader for string and sequence concatenation, and arithmetical addition.
  . Add bsh(...) data loader: Evaluates a BSH file.
 
 Core:
- . [!!] Add a warning to the manual about this:
-   https://sourceforge.net/tracker/index.php?func=detail&aid=1997892&group_id=74591&atid=541453
  . [!] Improve pp directive error messages so that they write out if the parameter was null
    (instead of complaining that it was missing or not of the proper type)
  . [!] Deep merging

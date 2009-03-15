@@ -63,7 +63,7 @@ data: {
             ant.html
             writefrontend.html
         ]
-        [{title:Syntaxes, file:syntaxes.html}
+        [{title:"Languages (formats) used", file:languages.html}
             tdd.html
             pathpattern.html
             ftl.html

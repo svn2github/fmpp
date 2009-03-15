@@ -382,7 +382,7 @@
   </#if>
 </#macro>
 
-<#macro setting name type default merging clShort='' deprecated=''>
+<#macro setting name type default merging clShort='' deprecated='' antAltAtt=''>
   <#if !stdSettings[name]??>
     <#stop 'No such standard setting exists: ${name}'>
   </#if>
@@ -420,6 +420,9 @@
     </#if>
     <#if clShort != ''>
       <i>Command-line short name: </i><tt>${clShort}</tt><br><#lt>
+    </#if>
+    <#if antAltAtt != ''>
+      <i>Ant task attribute name alternative: </i><tt>${antAltAtt}</tt><br><#lt>
     </#if>
   </p>
 </#macro>
