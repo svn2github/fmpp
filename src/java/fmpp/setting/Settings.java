@@ -2180,13 +2180,10 @@ public class Settings {
                                     + "expression "
                                     + StringUtil.jQuote((String) o)
                                     + " evaluates to an object which "
-                                    + (o != null
-                                    ? "doesn't implement "
-                                            + LocalDataBuilder.class.getName()
-                                            + ". (The class of the object is: "
-                                            + o.getClass().getName() + ")"
-                                    : "is null."
-                                    ));
+                                    + "doesn't implement "
+                                    + LocalDataBuilder.class.getName()
+                                    + ". (The class of the object is: "
+                                    + o.getClass().getName() + ")");
                         }
                         builder = (LocalDataBuilder) bo;
                     } else if (o instanceof Fragment) {
