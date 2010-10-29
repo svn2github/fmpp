@@ -30,6 +30,8 @@ Really the TODO
 ---------------
 
 Misc:
+ . [!!] Create contribs page, publish the schema reader and the Elipse stuff
+   there.
  . [!] Native Windows exe instead of fmpp.bat+lcp.bat.
    Bat-s has idiot limitations.
  . Add a GUI front-end
@@ -43,6 +45,7 @@ Data loaders:
  . Add bsh(...) data loader: Evaluates a BSH file.
 
 Core:
+ . [!!] freemarkerLinks should be able to load with class-loader.
  . [!] Improve pp directive error messages so that they write out if the parameter was null
    (instead of complaining that it was missing or not of the proper type)
  . [!] Deep merging

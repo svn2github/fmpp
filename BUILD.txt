@@ -78,6 +78,10 @@ is, you do not upload the tar.gz and zip to the WWW site, but do an FMPP
 release on SourceForge with the correct version number, or else the
 download link will be broken.
 
+Release the project on Ibiblio Maven:
+
+* Run "maven-upload"
+
 Releases should be announced on the following places:
 - Sourceforge.net email notification for subscribers
 - FMPP mailing list (fmpp-open@lists.sourceforge.net)
