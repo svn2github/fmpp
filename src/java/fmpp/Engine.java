@@ -195,7 +195,7 @@ public class Engine {
     private static final String CREATEDIR_FILE = "createdir.fmpp";
     
     private static final Set STATIC_FILE_EXTS = new HashSet();
-    {
+    static {
         String[] list = new String[] {
                 "jpg", "jpeg", "gif", "png", "swf", "bmp", "pcx", "tga", "tiff",
                 "ico",
